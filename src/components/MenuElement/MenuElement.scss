@@ -1,0 +1,36 @@
+
+.outer-box {
+  background-color: #C8DADD;
+  font-size: 11px;
+  //font-family: , serif;
+
+  width: 114px;
+  height: 114px;
+
+
+  .inner-box {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+
+    color: #000000;
+
+    .image{
+      height: 44%;
+    }
+    .name-label{
+      font-size: 100%;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .price-label{
+      margin-top: 20px;
+      font-size: 150%;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+}
