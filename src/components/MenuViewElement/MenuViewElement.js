@@ -1,11 +1,12 @@
 import React from 'react'
 import classNames from 'classnames/bind'
-import styles from "./MenuElement.scss"
+import styles from "./MenuViewElement.scss"
+import menuData from "../../data/MenuData"
 
 const cx = classNames.bind(styles);
 
 
-const MenuElement = ({menuName, menuPrice, imageSrc}) => {
+const MenuViewInnerElement = ({menuName, menuPrice, imageSrc}) => {
     return (
         <div className={cx('outer-box')}>
             <div className={cx('inner-box')}>
@@ -21,4 +22,11 @@ const MenuElement = ({menuName, menuPrice, imageSrc}) => {
     )
 };
 
-export default MenuElement
+
+const MenuViewElement = ({menuId})=>{
+    const menu = menuData.menus[menuId];
+    return (
+        <MenuViewInnerElement menuName={menu.menuName} menuPrice={menu.menuPrice} imageSrc={menu.imgSrc}/>
+    )
+}
+export default MenuViewElement
