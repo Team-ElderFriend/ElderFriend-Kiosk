@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames/bind'
 import styles from "./MenuViewElement.scss"
 import menuData from "../../data/MenuData"
+import {qmbtn, clbtn} from '../PopupFunc';
 
 const cx = classNames.bind(styles);
 
@@ -12,7 +13,7 @@ const MenuViewInnerElement = ({menuName, menuPrice, imageSrc, ...props}) => {
             <div className={cx('inner-box')}>
                 <img alt="" className={cx('image')} src={imageSrc}/>
                 <div className={cx('name-label')}>
-                    {menuName}
+                    {menuName}  <i onClick={qmbtn} className="far fa-question-circle"></i>
                 </div>
                 <div className={cx('price-label')}>
                     ₩{menuPrice}
