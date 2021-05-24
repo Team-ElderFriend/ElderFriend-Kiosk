@@ -28,17 +28,17 @@ const MenuData = {
             imgSrc: img1,
         },
     },
-    categories:{
-        'Recommended' :[
+    categoryMenus:{
+        'recommended' :[
             1, 2,
         ],
-        'Burgers': [
-            3, 4
+        'burgers': [
+            3, 4, 3, 3, 3, 3, 3,
         ],
-        'Side Menus': [
+        'sideMenus': [
             5
         ],
-        'Drinks':[
+        'drinks':[
 
         ],
     }

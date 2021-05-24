@@ -1,0 +1,15 @@
+
+.category-select-button {
+  width: 100%;
+  height: 100%;
+  background-color: #A0E8FF;
+  //border: black solid 1px;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.category-select-button.selected {
+  background-color: white;
+}
