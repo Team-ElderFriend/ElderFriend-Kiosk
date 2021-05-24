@@ -6,9 +6,9 @@ import menuData from "../../data/MenuData"
 const cx = classNames.bind(styles);
 
 
-const MenuViewInnerElement = ({menuName, menuPrice, imageSrc}) => {
+const MenuViewInnerElement = ({menuName, menuPrice, imageSrc, ...props}) => {
     return (
-        <div className={cx('outer-box')}>
+        <div className={cx('menu-view-element-outer-box')} {...props}>
             <div className={cx('inner-box')}>
                 <img alt="" className={cx('image')} src={imageSrc}/>
                 <div className={cx('name-label')}>
@@ -21,7 +21,6 @@ const MenuViewInnerElement = ({menuName, menuPrice, imageSrc}) => {
         </div>
     )
 };
-
 
 const MenuViewElement = ({menuId})=>{
     const menu = menuData.menus[menuId];

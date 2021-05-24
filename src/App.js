@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import MenuViewElement from "./components/MenuViewElement";
+import MenuListView from "./components/MenuListView";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MenuViewElement menuId={3}/>
+        <MenuListView menuIds={[3, 4, 3, 3, 3, 3]}/>
 
         <img src={logo} className="App-logo" alt="logo" />
         <p>

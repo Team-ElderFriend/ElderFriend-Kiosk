@@ -1,0 +1,16 @@
+
+.menu-list-view{
+  border: black solid 2px;
+  width: 414px;
+  height: 325px;
+
+  .inner-box{
+    text-align: left;
+    margin: 5px 0;
+
+    .slot{
+      display: inline-block;
+      margin: 15px 12px;
+    }
+  }
+}
