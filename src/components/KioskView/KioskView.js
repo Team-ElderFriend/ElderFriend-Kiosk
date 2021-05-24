@@ -53,6 +53,10 @@ class KioskView extends React.Component {
                     </tr>
                 </table>
                 <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
+
+                <div className={cx('kiosk-button', 'help-button')} onClick={()=>{}}> What should I do? </div>
+                <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
+                <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
             </div>
         );
     }
