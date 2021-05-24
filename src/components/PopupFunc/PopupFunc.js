@@ -33,7 +33,7 @@ const qmbtn = (e) => {
     var info = document.getElementsByClassName("ctxt")[0];
     var name = e.target.parentElement.innerHTML.split("  <")[0];
 
-    console.log(im.src);
+    name = name.replace("&amp;", "&");
 
     menuData.keys.map((key) => {
         if(menuData.menus[key].menuName == name) {
