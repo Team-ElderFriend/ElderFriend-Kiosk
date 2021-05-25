@@ -18,6 +18,7 @@ import left from '../../images/directions/left.png'
 import right from '../../images/directions/right.png'
 import ZoomContext from "../ZoomContext/ZoomContext";
 import FontSizeScale from "../FontSizeScale";
+import SelectViewElement from '../SelectViewElement';
 
 
 const cx = classNames.bind(styles);
@@ -100,7 +101,6 @@ class preKioskView extends React.Component {
                 this.setState({help: this.helpMessages[2], hand2: '', hand3: this.hands[3]});
                 setTimeout(() => {
                     this.setState({help: this.helpMessages[3], hand3: '', hand4: this.hands[4]});
-                    document.getElementById('selectlist')
                     setTimeout(() => {
                         this.setState({category: 'sideMenus', help: this.helpMessages[4], hand4: '', hand5: this.hands[5]});
                         setTimeout(() => {
@@ -109,14 +109,14 @@ class preKioskView extends React.Component {
                                 this.setState({help: this.helpMessages[6], hand6: '', hand7: this.hands[7]});
                                 setTimeout(() => {
                                     this.setState({help: this.helpMessages[7], hand7: '', hand8: this.hands[8]});
-                                    setTimeout(() => this.setState({category: 'recommended', help: <div>&emsp;</div>, hand8: ''}), 5000);
-                                }, 5000);
-                            }, 5000);
-                        }, 5000);
-                    }, 5000);
-                }, 5000);
-            }, 5000);
-        }, 5000);
+                                    setTimeout(() => this.setState({category: 'recommended', help: <div>&emsp;</div>, hand8: ''}), 3000);
+                                }, 3000);
+                            }, 3000);
+                        }, 3000);
+                    }, 3000);
+                }, 3000);
+            }, 3000);
+        }, 3000);
 
     }
 
