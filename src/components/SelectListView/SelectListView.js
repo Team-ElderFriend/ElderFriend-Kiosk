@@ -11,6 +11,9 @@ const preSelectListView = ({menuIds, counter,...props}) => {
     console.log(counter);
     return (
         <div className={cx('select-list-view')} {...props}>
+            <div className={cx('select-header')}>
+                Selected Menus
+            </div>
             <div className={cx('inner-box')}>
                 {
                     counter.selectedMenus.map((menu) => {

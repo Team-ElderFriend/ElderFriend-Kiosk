@@ -3,12 +3,17 @@
   border: black solid 1px;
   margin: 15px 4px 0 4px;
   width: 70%;
-  height: 325px;
+  height: 45%;
   float: left;
+
+  .select-header{
+    height: 10%;
+    font-size: 200%
+  }
 
 
   .inner-box{
-    height: 100%;
+    height: 90%;
     text-align: left;
     margin: 0 0;
     overflow: auto;
