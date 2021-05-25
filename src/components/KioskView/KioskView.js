@@ -8,6 +8,9 @@ import MenuData from "../../data/MenuData";
 import Step from "../Step";
 import HelpButton from "../HelpButton";
 import {connect} from 'react-redux';
+import LogoImg from '../../images/ui/cartoon.png'
+import MagnifierImg from '../../images/ui/magnifier-2.png'
+import Slider from '@material-ui/core/Slider';
 
 import up from '../../images/directions/up.png'
 import down from '../../images/directions/down.png'
@@ -35,6 +38,7 @@ class preKioskView extends React.Component {
         };
         this.changeCategory = this.changeCategory.bind(this);
         this.helpButtonClick = this.helpButtonClick.bind(this);
+        this.onZoomSliderChange = this.onZoomSliderChange.bind(this);
 
         this.categories = [
             {
@@ -53,7 +57,7 @@ class preKioskView extends React.Component {
                 category: 'drinks',
                 text: 'Drinks',
             },
-        ]; 
+        ];
 
         this.hands = [
             '',
@@ -77,7 +81,7 @@ class preKioskView extends React.Component {
             <Step step={'7'} dir={'right'} message={'Make payment.'}/>,
             <Step step={'8'} dir={'up'} message={'Press "Cancel" or "Confirm" depending on your decision.'}/>
         ]
-        
+
     }
 
     changeCategory(category) {
@@ -109,16 +113,43 @@ class preKioskView extends React.Component {
                 }, 5000);
             }, 5000);
         }, 5000);
-        
+
+    }
+
+    getScale(step) {
+        return 0.4 + step * 0.3;
+    }
+
+    onZoomSliderChange(event, newValue) {
+        this.setState({
+            zoom_step: newValue,
+        })
     }
 
     render() {
         return (
             <div className={cx('kiosk-view')}>
+                {/* header */}
+                <div className={cx('header')}>
+                    <img className={cx('logo')} src={LogoImg} alt=""/>
+                    <div className={cx('magnifier-image', 'left')}>
+                        <img src={MagnifierImg} alt={""}/>
+                        <div className={cx('inner-text')}> -</div>
+                    </div>
+                    <div className={cx('magnifier-image', 'right')}>
+                        <img src={MagnifierImg} alt={""}/>
+                        <div className={cx('inner-text')}> +</div>
+                    </div>
+                    <Slider className={cx('zoom-slider')} step={1} max={4} marks onChange={this.onZoomSliderChange}
+                            value={this.state.zoom_step}/>
+                </div>
+
+                {/* category selector buttons*/}
                 <table className={cx('category-select-buttons-table')}>
                     <tr>
 
-                        {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')} category={d.category} text={d.text}
+                        {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')} category={d.category}
+                                                                             text={d.text}
                                                                              onCategorySelect={this.changeCategory}
                                                                              selectedCategory={this.state.category}/>
                         </td>))}
@@ -150,10 +181,11 @@ class preKioskView extends React.Component {
 
 const mapStateToProps = function (state) {
     return {
-      message: 'This is message from mapStateToProps',
-      counter: state.counters || {sum:0, selectedMenus:[]}
+        message: 'This is message from mapStateToProps',
+        counter: state.counters || {sum: 0, selectedMenus: []}
     }
-  }
-  const KioskView = connect(mapStateToProps)(preKioskView)
+}
+const KioskView = connect(mapStateToProps)(preKioskView)
 
 export default KioskView
+
