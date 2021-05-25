@@ -58,8 +58,11 @@ class KioskView extends React.Component {
                 <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 <HelpButton message={'What should I do?'}/>
+                <div className={cx('button-box')}>
                 <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
+                </div>
+                
                 <Step dir={'down'} step={'1'} message={'Choose a menu from the burger menus. You might also want to order a drink.'}/>
             </div>
         );
