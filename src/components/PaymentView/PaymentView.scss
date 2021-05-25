@@ -1,0 +1,11 @@
+.payment-view{
+    width: 427px;
+    height: 774px;
+    border:1px solid green;
+    position: absolute;
+    left: 50%;
+    margin-left: -214.5px;
+    .total-prize{
+        font-size: 200%;
+    }
+}

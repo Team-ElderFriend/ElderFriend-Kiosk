@@ -20,6 +20,13 @@ import ZoomContext from "../ZoomContext/ZoomContext";
 import FontSizeScale from "../FontSizeScale";
 import SelectViewElement from '../SelectViewElement';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    NavLink,
+    Redirect
+  } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -176,7 +183,7 @@ class preKioskView extends React.Component {
                                 <SelectListView id='selectlist' menuIds={MenuData.categoryMenus[this.state.category]}/>
 
                                 {this.state.help}
-                                <div className={cx('total-prize')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p>
+                                <div className={cx('total-price')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p>
                                 </div>
                                 <div>&emsp;</div>
                                 <button className={cx('help-button')}
@@ -191,9 +198,9 @@ class preKioskView extends React.Component {
                                 {this.state.hand6}
                                 {this.state.hand7}
                                 {this.state.hand8}
-                                <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
-                                }}> Payment
-                                </div>
+                                <NavLink to="/components/PaymentView" style={{ textDecoration: 'none' ,color: 'black' }}>
+                                    <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
+                                </NavLink>
                                 <div>{this.state.help}</div>
                             </FontSizeScale>
                         }
