@@ -5,6 +5,7 @@ import CategorySelectButton from "../CategorySelectButton";
 import MenuListView from "../MenuListView";
 import SelectListView from "../SelectListView";
 import MenuData from "../../data/MenuData";
+import Step from "../Step"
 
 const cx = classNames.bind(styles);
 
@@ -58,6 +59,7 @@ class KioskView extends React.Component {
                 <div className={cx('kiosk-button', 'help-button')} onClick={()=>{}}> What should I do? </div>
                 <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
+                <Step dir={'left'} step={'1'} message={'Choose a menu.'}/>
             </div>
         );
     }
