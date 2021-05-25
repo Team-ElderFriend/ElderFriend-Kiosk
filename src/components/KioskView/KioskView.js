@@ -17,7 +17,7 @@ class preKioskView extends React.Component {
         super(props);
         this.state = {
             category: 'recommended',
-            help: '',
+            help: <div>&emsp;</div>
         };
         this.changeCategory = this.changeCategory.bind(this);
         this.helpButtonClick = this.helpButtonClick.bind(this);
@@ -100,11 +100,10 @@ class preKioskView extends React.Component {
                 </table>
                 <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
+
                 {this.state.help}
+                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
                 <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
-                <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
-                
-                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>                
                 <div className={cx('button-box')}></div>
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
                 <div>{this.state.help}</div>
