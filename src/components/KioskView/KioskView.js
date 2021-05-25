@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 const cx = classNames.bind(styles);
 
 
-class KioskView extends React.Component {
+class preKioskView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -100,6 +100,9 @@ class KioskView extends React.Component {
                 </table>
                 <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
+                {this.state.help}
+                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
+                <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
                 
                 <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>                
                 <div className={cx('button-box')}></div>
@@ -110,5 +113,12 @@ class KioskView extends React.Component {
     }
 }
 
-export default KioskView
+const mapStateToProps = function (state) {
+    return {
+      message: 'This is message from mapStateToProps',
+      counter: state.counters || {sum:0, selectedMenus:[]}
+    }
+  }
+  const KioskView = connect(mapStateToProps)(preKioskView)
 
+export default KioskView
