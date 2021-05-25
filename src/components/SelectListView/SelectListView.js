@@ -30,7 +30,7 @@ const preSelectListView = ({menuIds, counter,...props}) => {
 const mapStateToProps = function (state) {
     return {
       message: 'This is message from mapStateToProps',
-      counter: state.counters || {sum:0, selectedMenus:{}}
+      counter: state.counters || {sum:0, selectedMenus:[]}
     }
   }
   const SelectListView = connect(mapStateToProps)(preSelectListView)

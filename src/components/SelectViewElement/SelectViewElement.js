@@ -9,10 +9,15 @@ import {add, reduce, remove} from '../../actions';
 const cx = classNames.bind(styles);
 
 
-const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, dispatch, ...props}) => {
+const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, counter, dispatch, ...props}) => {
     return (
         <div className={cx('select-view-element-outer-box')} {...props}>
             <div className={cx('inner-box')}>
+                <div className={cx('add-reduce-box')}>
+                   <i  className="fas fa-minus-circle" onClick={()=>dispatch(reduce(menuId))}></i> 
+                    {counter.selectedMenus.find(element => element.id === menuId).number}
+                    <i  className="fas fa-plus-circle" onClick={()=>dispatch(add(menuId, menuPrice))}></i>
+                </div>
                 <img alt="" className={cx('image')} src={imageSrc}/>
                 <div className={cx('name-label')}>
                     {menuName}  <i onClick={qmbtn} className="far fa-question-circle"></i>
@@ -31,7 +36,7 @@ const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, dispa
 const mapStateToProps = function (state) {
     return {
       message: 'This is message from mapStateToProps',
-      counter: state.counters || {sum:0, selectedMenus:{}}
+      counter: state.counters || {sum:0, selectedMenus:[]}
     }
   }
   const SelectViewInnerElement = connect(mapStateToProps)(preSelectViewInnerElement)
