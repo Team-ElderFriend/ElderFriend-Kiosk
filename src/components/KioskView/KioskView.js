@@ -23,7 +23,15 @@ class preKioskView extends React.Component {
         super(props);
         this.state = {
             category: 'recommended',
-            help: <div>&emsp;</div>
+            help: <div>&emsp;</div>, 
+            hand1: '', 
+            hand2: '', 
+            hand3: '', 
+            hand4: '', 
+            hand5: '', 
+            hand6: '', 
+            hand7: '', 
+            hand8: ''
         };
         this.changeCategory = this.changeCategory.bind(this);
         this.helpButtonClick = this.helpButtonClick.bind(this);
@@ -47,13 +55,25 @@ class preKioskView extends React.Component {
             },
         ]; 
 
+        this.hands = [
+            '',
+            <img className={cx('step-1')} src={up} alt={''}/>,
+            <img className={cx('step-2')} src={up} alt={''}/>,
+            <img className={cx('step-3')} src={up} alt={''}/>,
+            <img className={cx('step-4')} src={up} alt={''}/>,
+            <img className={cx('step-5')} src={up} alt={''}/>,
+            <img className={cx('step-6')} src={up} alt={''}/>,
+            <img className={cx('step-7')} src={up} alt={''}/>,
+            <img className={cx('step-8')} src={up} alt={''}/>,
+        ]
+
         this.helpMessages = [
-            <Step step={'1'} dir={'down'} message={'Click here to see the burger menus.'}/>,
-            <Step step={'2'} dir={'up'} message={'Choose a menu. Scroll to the bottom to see more menus.'}/>,
-            <Step step={'3'} dir={'right'} message={'Add the selected item to the list.'}/>,
-            <Step step={'4'} dir={'up'} message={'Click this to see the side menus.'}/>,
+            <Step step={'1'} dir={'down'} message={'Click to see the burger menus.'}/>,
+            <Step step={'2'} dir={'up'} message={'Click to select this menu or scroll to the bottom to see more menus.'}/>,
+            <Step step={'3'} dir={'right'} message={'Add the selected menu to the list.'}/>,
+            <Step step={'4'} dir={'up'} message={'Click to see the side menus.'}/>,
             <Step step={'5'} dir={'up'} message={'Click to select this side menu.'}/>,
-            <Step step={'6'} dir={'right'} message={'Add the selected item to the list.'}/>,
+            <Step step={'6'} dir={'right'} message={'Add the selected menu to the list.'}/>,
             <Step step={'7'} dir={'right'} message={'Make payment.'}/>,
             <Step step={'8'} dir={'up'} message={'Press "Cancel" or "Confirm" depending on your decision.'}/>
         ]
@@ -65,23 +85,23 @@ class preKioskView extends React.Component {
     }
 
     helpButtonClick() {
+        this.setState({hand1: this.hands[1]});
         this.setState({help: this.helpMessages[0]})
-        this.setState({category: 'burgers'})
         setTimeout(() => {
-            this.setState({help: this.helpMessages[1]});
+            this.setState({category: 'burgers', hand1: '', hand2: this.hands[2], help: this.helpMessages[1]});
             setTimeout(() => {
-                this.setState({help: this.helpMessages[2]});
+                this.setState({help: this.helpMessages[2], hand2: '', hand3: this.hands[3]});
                 setTimeout(() => {
-                    this.setState({help: this.helpMessages[3]});
+                    this.setState({help: this.helpMessages[3], hand3: '', hand4: this.hands[4]});
                     setTimeout(() => {
-                        this.setState({help: this.helpMessages[4]});
+                        this.setState({category: 'sideMenus', help: this.helpMessages[4], hand4: '', hand5: this.hands[5]});
                         setTimeout(() => {
-                            this.setState({help: this.helpMessages[5]});
+                            this.setState({help: this.helpMessages[5], hand5: '', hand6: this.hands[6]});
                             setTimeout(() => {
-                                this.setState({help: this.helpMessages[6]});
+                                this.setState({help: this.helpMessages[6], hand6: '', hand7: this.hands[7]});
                                 setTimeout(() => {
-                                    this.setState({help: this.helpMessages[7]});
-                                    setTimeout(() => this.setState({help: <div>&emsp;</div>}), 5000);
+                                    this.setState({help: this.helpMessages[7], hand7: '', hand8: this.hands[8]});
+                                    setTimeout(() => this.setState({category: 'recommended', help: <div>&emsp;</div>, hand8: ''}), 5000);
                                 }, 5000);
                             }, 5000);
                         }, 5000);
@@ -113,6 +133,14 @@ class preKioskView extends React.Component {
                 <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
                 <div className={cx('button-box')}></div>
                 <div>&emsp;</div>
+                {this.state.hand1}
+                {this.state.hand2}
+                {this.state.hand3}
+                {this.state.hand4}
+                {this.state.hand5}
+                {this.state.hand6}
+                {this.state.hand7}
+                {this.state.hand8}
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
                 <div>{this.state.help}</div>
             </div>
