@@ -1,0 +1,19 @@
+
+.select-list-view{
+  border: black solid 1px;
+  margin: 15px 4px 0 4px;
+  width: 70%;
+  height: 325px;
+
+
+  .inner-box{
+    height: 100%;
+    text-align: left;
+    margin: 0 0;
+    overflow: auto;
+    .slot{
+      display: inline-block;
+      margin: 12px 9px;
+    }
+  }
+}

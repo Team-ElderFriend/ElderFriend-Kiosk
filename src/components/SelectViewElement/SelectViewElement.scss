@@ -1,5 +1,5 @@
 
-.menu-view-element-outer-box {
+.select-view-element-outer-box {
   background-color: #C8DADD;
   font-size: 10px;
   //font-family: , serif;
@@ -36,17 +36,17 @@
       font-weight: bold;
       text-align: center;
     }
-    .add-box{
+    .remove-box{
       margin-top: 0;
       height: 15%;
       font-size: 150%;
       font-weight: bold;
       text-align: center;
 
-      .add-button{
+      .remove-button{
         width: 100%;
         height: 100%;
-        background-color: #fefe22;
+        background-color: #fa5f5f;
         border-radius: 10%/50%;
         font-weight: bold;
         text-align: center;
