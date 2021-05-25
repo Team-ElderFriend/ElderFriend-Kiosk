@@ -5,7 +5,8 @@ import CategorySelectButton from "../CategorySelectButton";
 import MenuListView from "../MenuListView";
 import SelectListView from "../SelectListView";
 import MenuData from "../../data/MenuData";
-import Step from "../Step"
+import Step from "../Step";
+import HelpButton from "../HelpButton";
 
 const cx = classNames.bind(styles);
 
@@ -56,10 +57,10 @@ class KioskView extends React.Component {
                 </table>
                 <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
-                <div className={cx('kiosk-button', 'help-button')} onClick={()=>{}}> What should I do? </div>
+                <HelpButton message={'What should I do?'}/>
                 <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
-                <Step dir={'left'} step={'1'} message={'Choose a menu.'}/>
+                <Step dir={'down'} step={'1'} message={'Choose a menu from the burger menus. You might also want to order a drink.'}/>
             </div>
         );
     }

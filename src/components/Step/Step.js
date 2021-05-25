@@ -13,32 +13,38 @@ const cx = classNames.bind(styles);
 const Step = ({step, dir, message}) => {
     if (dir == 'up') {
         return (
-            <div>
+            <div className={cx('step-message')}>
                 <img className={cx('upOrDown')} alt='' src={up} />
-                <div>'Step ' + {step} + ': ' + {message}</div>
+                <br />
+                <div>{'Step ' + step + ': ' + message}</div>
             </div>
         )
     } 
     if (dir == 'down') {
         return (
-            <div>
-                <div>'Step ' + {step} + ': ' + {message}</div>
+            <div className={cx('step-message')}>
+                <div>{'Step ' + step + ': ' + message}</div>
+                <br />
                 <img className={cx('upOrDown')} alt='' src={down} />
             </div>
         )
     }
     if (dir == 'left') {
         return (
-            <div>
+            <div className={cx('step-message')}>
                 <img className={cx('leftOrRight')} alt='' src={left} />
-                'Step ' + {step} + ': ' + {message}
+                &emsp;
+                &emsp;
+                {'Step ' + step + ': ' + message}
             </div>
         )
     }
     if (dir == 'right') {
         return (
-            <div>
-                'Step ' + {step} + ': ' + {message}
+            <div className={cx('step-message')}>
+                {'Step ' + step + ': ' + message}
+                &emsp;
+                &emsp;
                 <img className={cx('leftOrRight')} alt='' src={right} />
             </div>
         )
