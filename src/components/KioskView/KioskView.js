@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 const cx = classNames.bind(styles);
 
 
-class KioskView extends React.Component {
+class preKioskView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
