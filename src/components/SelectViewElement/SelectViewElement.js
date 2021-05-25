@@ -14,9 +14,13 @@ const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, count
         <div className={cx('select-view-element-outer-box')} {...props}>
             <div className={cx('inner-box')}>
                 <div className={cx('add-reduce-box')}>
-                   <i  className="fas fa-minus-circle" onClick={()=>dispatch(reduce(menuId))}></i> 
+                    <span className={cx('minus-box')}>
+                   <i  className="fas fa-minus-circle"  onClick={()=>dispatch(reduce(menuId))}></i> 
+                    </span>
                     {counter.selectedMenus.find(element => element.id === menuId).number}
-                    <i  className="fas fa-plus-circle" onClick={()=>dispatch(add(menuId, menuPrice))}></i>
+                    <span className={cx('plus-box')}>
+                    <i  className="fas fa-plus-circle"  onClick={()=>dispatch(add(menuId, menuPrice))}></i>
+                    </span>
                 </div>
                 <img alt="" className={cx('image')} src={imageSrc}/>
                 <div className={cx('name-label')}>
