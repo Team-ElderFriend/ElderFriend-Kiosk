@@ -11,41 +11,41 @@ import right from '../../images/directions/right.png'
 const cx = classNames.bind(styles);
 
 const Step = ({step, dir, message}) => {
+    /*
     if (dir == 'up') {
         return (
-            <div className={cx('step-message')}>
+            <div>
                 <img className={cx('upOrDown')} alt='' src={up} />
                 <br />
-                <div>{'Step ' + step + ': ' + message}</div>
+                <div className={cx('step-message')}>{'Step ' + step + ': ' + message}</div>
             </div>
         )
     } 
     if (dir == 'down') {
         return (
-            <div className={cx('step-message')}>
-                <div>{'Step ' + step + ': ' + message}</div>
+            <div>
+                <div className={cx('step-message')}>{'Step ' + step + ': ' + message}</div>
                 <br />
                 <img className={cx('upOrDown')} alt='' src={down} />
             </div>
         )
     }
-    if (dir == 'left') {
+    */
+    if (dir == 'down' || dir == 'left') {
         return (
-            <div className={cx('step-message')}>
-                <img className={cx('leftOrRight')} alt='' src={left} />
+            <div>
+                <img className={cx(dir)} alt='' src={dir == 'down' ? down : left} />
                 &emsp;
-                &emsp;
-                {'Step ' + step + ': ' + message}
+                <div className={cx('step-message')}>{'Step ' + step + ': ' + message}</div>
             </div>
         )
     }
-    if (dir == 'right') {
+    if (dir == 'up' || dir == 'right') {
         return (
-            <div className={cx('step-message')}>
-                {'Step ' + step + ': ' + message}
+            <div>
+                <div className={cx('step-message')}>{'Step ' + step + ': ' + message}</div>
                 &emsp;
-                &emsp;
-                <img className={cx('leftOrRight')} alt='' src={right} />
+                <img className={cx(dir)} alt='' src={dir == 'up' ? up : right} />
             </div>
         )
     }
