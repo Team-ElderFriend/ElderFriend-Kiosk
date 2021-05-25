@@ -34,7 +34,6 @@ const Step = ({step, dir, message}) => {
     if (dir == 'down' || dir == 'left') {
         return (
             <div>
-                
                 &emsp;
                 <div className={cx('step-message')}>{'Step ' + step + ': ' + message}</div>
             </div>
@@ -45,7 +44,6 @@ const Step = ({step, dir, message}) => {
             <div>
                 <div className={cx('step-message')}>{'Step ' + step + ': ' + message}</div>
                 &emsp;
-                
             </div>
         )
     }

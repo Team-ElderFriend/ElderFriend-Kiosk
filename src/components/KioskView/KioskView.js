@@ -9,6 +9,12 @@ import Step from "../Step";
 import HelpButton from "../HelpButton";
 import {connect} from 'react-redux';
 
+import up from '../../images/directions/up.png'
+import down from '../../images/directions/down.png'
+import left from '../../images/directions/left.png'
+import right from '../../images/directions/right.png'
+
+
 const cx = classNames.bind(styles);
 
 
@@ -75,7 +81,7 @@ class preKioskView extends React.Component {
                                 this.setState({help: this.helpMessages[6]});
                                 setTimeout(() => {
                                     this.setState({help: this.helpMessages[7]});
-                                    setTimeout(() => this.setState({help: ''}), 5000);
+                                    setTimeout(() => this.setState({help: <div>&emsp;</div>}), 5000);
                                 }, 5000);
                             }, 5000);
                         }, 5000);
@@ -103,8 +109,10 @@ class preKioskView extends React.Component {
 
                 {this.state.help}
                 <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
+                <div>&emsp;</div>
                 <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
                 <div className={cx('button-box')}></div>
+                <div>&emsp;</div>
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
                 <div>{this.state.help}</div>
             </div>
