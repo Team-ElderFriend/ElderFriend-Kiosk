@@ -8,6 +8,8 @@ import MenuData from "../../data/MenuData";
 import Step from "../Step";
 import HelpButton from "../HelpButton";
 import {connect} from 'react-redux';
+import LogoImg from '../../images/ui/cartoon.png'
+import MagnifierImg from '../../images/ui/magnifier-2.png'
 
 const cx = classNames.bind(styles);
 
@@ -39,7 +41,7 @@ class preKioskView extends React.Component {
                 category: 'drinks',
                 text: 'Drinks',
             },
-        ]; 
+        ];
 
         this.helpMessages = [
             <Step step={'1'} dir={'down'} message={'Click here to see the burger menus.'}/>,
@@ -51,7 +53,7 @@ class preKioskView extends React.Component {
             <Step step={'7'} dir={'right'} message={'Make payment.'}/>,
             <Step step={'8'} dir={'up'} message={'Press "Cancel" or "Confirm" depending on your decision.'}/>
         ]
-        
+
     }
 
     changeCategory(category) {
@@ -89,17 +91,29 @@ class preKioskView extends React.Component {
         setTimeout(() => this.setState({help: this.helpMessages[4]}), 5000);
         setTimeout(() => this.setState({help: this.helpMessages[5]}), 5000);
         setTimeout(() => this.setState({help: this.helpMessages[6]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[7]}), 5000);     
-        */  
+        setTimeout(() => this.setState({help: this.helpMessages[7]}), 5000);
+        */
     }
 
     render() {
         return (
             <div className={cx('kiosk-view')}>
+                <div className={cx('header')}>
+                    <img className={cx('logo')} src={LogoImg} alt=""/>
+                    <div className={cx('magnifier-image', 'left')}>
+                        <img src={MagnifierImg} alt={""}/>
+                        <div className={cx('inner-text')}> - </div>
+                    </div>
+                    <div className={cx('magnifier-image', 'right')}>
+                        <img src={MagnifierImg} alt={""}/>
+                        <div className={cx('inner-text')}> + </div>
+                    </div>
+                </div>
                 <table className={cx('category-select-buttons-table')}>
                     <tr>
 
-                        {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')} category={d.category} text={d.text}
+                        {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')} category={d.category}
+                                                                             text={d.text}
                                                                              onCategorySelect={this.changeCategory}
                                                                              selectedCategory={this.state.category}/>
                         </td>))}
@@ -109,12 +123,16 @@ class preKioskView extends React.Component {
                 <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 {this.state.help}
                 <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
-                <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
-                
+                <div className={cx('kiosk-button', 'add-item-button')} onClick={() => {
+                }}> Add item to list
+                </div>
+
                 <div className={cx('button-box')}>
-                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
-                <HelpButton message={'What should I do?'}/>
-                <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
+                    <div className={cx('total-prize')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p></div>
+                    <HelpButton message={'What should I do?'}/>
+                    <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
+                    }}> Payment
+                    </div>
                 </div>
             </div>
         );
@@ -123,10 +141,10 @@ class preKioskView extends React.Component {
 
 const mapStateToProps = function (state) {
     return {
-      message: 'This is message from mapStateToProps',
-      counter: state.counters || {sum:0, selectedMenus:[]}
+        message: 'This is message from mapStateToProps',
+        counter: state.counters || {sum: 0, selectedMenus: []}
     }
-  }
-  const KioskView = connect(mapStateToProps)(preKioskView)
+}
+const KioskView = connect(mapStateToProps)(preKioskView)
 
 export default KioskView
