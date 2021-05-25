@@ -13,10 +13,10 @@ const preSelectListView = ({menuIds, counter,...props}) => {
         <div className={cx('select-list-view')} {...props}>
             <div className={cx('inner-box')}>
                 {
-                    Object.keys(counter.selectedMenus).map((menuId) => {
+                    counter.selectedMenus.map((menu) => {
                         return (
                             <div className={cx('slot')}>
-                                <SelectViewElement menuId={menuId}/>
+                                <SelectViewElement menuId={menu.id}/>
                             </div>
                         )
                     })
