@@ -4,11 +4,12 @@ import styles from "./SelectViewElement.scss"
 import menuData from "../../data/MenuData"
 import {qmbtn, clbtn} from '../PopupFunc';
 import {connect} from 'react-redux';
+import {add, reduce, remove} from '../../actions';
 
 const cx = classNames.bind(styles);
 
 
-const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, ...props}) => {
+const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, dispatch, ...props}) => {
     return (
         <div className={cx('select-view-element-outer-box')} {...props}>
             <div className={cx('inner-box')}>
@@ -20,7 +21,7 @@ const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, ...pr
                     ₩{menuPrice}
                 </div>
                 <div className={cx('remove-box')}>
-                    <button className={cx('remove-button')}>Remove</button>
+                    <button className={cx('remove-button')} onClick={()=> dispatch(remove(menuId))}>Remove</button>
                 </div>
             </div>
         </div>
