@@ -110,6 +110,10 @@ class KioskView extends React.Component {
                 <div></div>
                 <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
                 <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
+                
+                <div className={cx('button-box')}>
+                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
+                <HelpButton message={'What should I do?'}/>
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
             </div>
         );
