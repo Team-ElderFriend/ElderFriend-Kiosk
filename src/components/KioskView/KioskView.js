@@ -10,6 +10,7 @@ import HelpButton from "../HelpButton";
 import {connect} from 'react-redux';
 import LogoImg from '../../images/ui/cartoon.png'
 import MagnifierImg from '../../images/ui/magnifier-2.png'
+import Slider from '@material-ui/core/Slider';
 
 const cx = classNames.bind(styles);
 
@@ -20,9 +21,11 @@ class preKioskView extends React.Component {
         this.state = {
             category: 'recommended',
             help: '',
+            zoom_step: 1,
         };
         this.changeCategory = this.changeCategory.bind(this);
         this.helpButtonClick = this.helpButtonClick.bind(this);
+        this.onZoomSliderChange = this.onZoomSliderChange.bind(this);
 
         this.categories = [
             {
@@ -95,20 +98,35 @@ class preKioskView extends React.Component {
         */
     }
 
+    getScale(step) {
+        return 0.4 + step * 0.3;
+    }
+
+    onZoomSliderChange(event, newValue) {
+        this.setState({
+            zoom_step: newValue,
+        })
+    }
+
     render() {
         return (
             <div className={cx('kiosk-view')}>
+                {/* header */}
                 <div className={cx('header')}>
                     <img className={cx('logo')} src={LogoImg} alt=""/>
                     <div className={cx('magnifier-image', 'left')}>
                         <img src={MagnifierImg} alt={""}/>
-                        <div className={cx('inner-text')}> - </div>
+                        <div className={cx('inner-text')}> -</div>
                     </div>
                     <div className={cx('magnifier-image', 'right')}>
                         <img src={MagnifierImg} alt={""}/>
-                        <div className={cx('inner-text')}> + </div>
+                        <div className={cx('inner-text')}> +</div>
                     </div>
+                    <Slider className={cx('zoom-slider')} step={1} max={4} marks onChange={this.onZoomSliderChange}
+                            value={this.state.zoom_step}/>
                 </div>
+
+                {/* category selector buttons*/}
                 <table className={cx('category-select-buttons-table')}>
                     <tr>
 
