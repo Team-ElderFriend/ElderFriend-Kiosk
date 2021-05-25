@@ -16,6 +16,7 @@ import up from '../../images/directions/up.png'
 import down from '../../images/directions/down.png'
 import left from '../../images/directions/left.png'
 import right from '../../images/directions/right.png'
+import ZoomContext from "../ZoomContext/ZoomContext";
 
 
 const cx = classNames.bind(styles);
@@ -27,7 +28,7 @@ class preKioskView extends React.Component {
         this.state = {
             category: 'recommended',
             help: <div>&emsp;</div>,
-            zoom_step: 1,
+            zoom_level: 2,
         };
         this.changeCategory = this.changeCategory.bind(this);
         this.helpButtonClick = this.helpButtonClick.bind(this);
@@ -97,13 +98,13 @@ class preKioskView extends React.Component {
 
     }
 
-    getScale(step) {
-        return 0.4 + step * 0.3;
+    getScale(level) {
+        return 0.4 + level * 0.3;
     }
 
     onZoomSliderChange(event, newValue) {
         this.setState({
-            zoom_step: newValue,
+            zoom_level: newValue,
         })
     }
 
@@ -122,31 +123,37 @@ class preKioskView extends React.Component {
                         <div className={cx('inner-text')}> +</div>
                     </div>
                     <Slider className={cx('zoom-slider')} step={1} max={4} marks onChange={this.onZoomSliderChange}
-                            value={this.state.zoom_step}/>
+                            value={this.state.zoom_level}/>
                 </div>
 
                 {/* category selector buttons*/}
-                <table className={cx('category-select-buttons-table')}>
-                    <tr>
 
-                        {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')} category={d.category}
-                                                                             text={d.text}
-                                                                             onCategorySelect={this.changeCategory}
-                                                                             selectedCategory={this.state.category}/>
-                        </td>))}
-                    </tr>
-                </table>
-                <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
-                <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
+                <ZoomContext.Provider value={{zoom_level: this.state.zoom_level, zoom_scale: this.getScale(this.state.zoom_level)}}>
+                    <table className={cx('category-select-buttons-table')}>
+                        <tr>
 
-                {this.state.help}
-                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
-                <div>&emsp;</div>
-                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
-                <div className={cx('button-box')}></div>
-                <div>&emsp;</div>
-                <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
-                <div>{this.state.help}</div>
+                            {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')}
+                                                                                 category={d.category}
+                                                                                 text={d.text}
+                                                                                 onCategorySelect={this.changeCategory}
+                                                                                 selectedCategory={this.state.category}/>
+                            </td>))}
+                        </tr>
+                    </table>
+                    <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
+                    <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
+
+                    {this.state.help}
+                    <div className={cx('total-prize')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p></div>
+                    <div>&emsp;</div>
+                    <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
+                    <div className={cx('button-box')}></div>
+                    <div>&emsp;</div>
+                    <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
+                    }}> Payment
+                    </div>
+                    <div>{this.state.help}</div>
+                </ZoomContext.Provider>
             </div>
         );
     }
