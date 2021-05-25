@@ -7,6 +7,7 @@ import SelectListView from "../SelectListView";
 import MenuData from "../../data/MenuData";
 import Step from "../Step";
 import HelpButton from "../HelpButton";
+import {connect} from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -107,7 +108,6 @@ class KioskView extends React.Component {
                 <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 {this.state.help}
-                <div></div>
                 <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
                 <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
                 
@@ -115,10 +115,18 @@ class KioskView extends React.Component {
                 <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
                 <HelpButton message={'What should I do?'}/>
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
+                </div>
             </div>
         );
     }
 }
 
-export default KioskView
+const mapStateToProps = function (state) {
+    return {
+      message: 'This is message from mapStateToProps',
+      counter: state.counters || {sum:0, selectedMenus:[]}
+    }
+  }
+  const KioskView = connect(mapStateToProps)(preKioskView)
 
+export default KioskView
