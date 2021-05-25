@@ -100,6 +100,7 @@ class preKioskView extends React.Component {
                 this.setState({help: this.helpMessages[2], hand2: '', hand3: this.hands[3]});
                 setTimeout(() => {
                     this.setState({help: this.helpMessages[3], hand3: '', hand4: this.hands[4]});
+                    document.getElementById('selectlist')
                     setTimeout(() => {
                         this.setState({category: 'sideMenus', help: this.helpMessages[4], hand4: '', hand5: this.hands[5]});
                         setTimeout(() => {
@@ -155,39 +156,55 @@ class preKioskView extends React.Component {
                 </div>
 
                 {/* category selector buttons*/}
-                <table className={cx('category-select-buttons-table')}>
-                    <tr>
+                <ZoomContext.Provider
+                    value={{zoom_level: this.state.zoom_level, zoom_scale: this.getScale(this.state.zoom_level)}}>
+                    <ZoomContext.Consumer>
+                        {({zoom_scale}) => {
+                            return <FontSizeScale scale={zoom_scale}>
+                                <table className={cx('category-select-buttons-table')}>
+                                    <tr>
 
-                        {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')} category={d.category}
-                                                                             text={d.text}
-                                                                             onCategorySelect={this.changeCategory}
-                                                                             selectedCategory={this.state.category}/>
-                        </td>))}
-                    </tr>
-                </table>
-                <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
-                <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
+                                        {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')}
+                                                                                             category={d.category}
+                                                                                             text={d.text}
+                                                                                             onCategorySelect={this.changeCategory}
+                                                                                             selectedCategory={this.state.category}/>
+                                        </td>))}
+                                    </tr>
+                                </table>
+                                <MenuListView id='menulist' menuIds={MenuData.categoryMenus[this.state.category]}/>
+                                <SelectListView id='selectlist' menuIds={MenuData.categoryMenus[this.state.category]}/>
 
-                {this.state.help}
-                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
-                <div>&emsp;</div>
-                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
-                <div className={cx('button-box')}></div>
-                <div>&emsp;</div>
-                {this.state.hand1}
-                {this.state.hand2}
-                {this.state.hand3}
-                {this.state.hand4}
-                {this.state.hand5}
-                {this.state.hand6}
-                {this.state.hand7}
-                {this.state.hand8}
-                <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
-                <div>{this.state.help}</div>
+                                {this.state.help}
+                                <div className={cx('total-prize')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p>
+                                </div>
+                                <div>&emsp;</div>
+                                <button className={cx('help-button')}
+                                        onClick={this.helpButtonClick}>{'What should I do?'}</button>
+                                <div className={cx('button-box')}></div>
+                                <div>&emsp;</div>
+                                {this.state.hand1}
+                                {this.state.hand2}
+                                {this.state.hand3}
+                                {this.state.hand4}
+                                {this.state.hand5}
+                                {this.state.hand6}
+                                {this.state.hand7}
+                                {this.state.hand8}
+                                <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
+                                }}> Payment
+                                </div>
+                                <div>{this.state.help}</div>
+                            </FontSizeScale>
+                        }
+                        }
+                    </ZoomContext.Consumer>
+                </ZoomContext.Provider>
             </div>
         );
     }
 }
+
 
 const mapStateToProps = function (state) {
     return {
