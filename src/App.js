@@ -33,7 +33,7 @@ function App() {
                 </div>
             </div>
             </div>
-                        <Router>
+            <Router>
                 <Switch>
                 <Route exact path="/" component={KioskView}>
             <KioskView/>

@@ -8,7 +8,6 @@ import MenuData from "../../data/MenuData";
 import Step from "../Step";
 import HelpButton from "../HelpButton";
 import {connect} from 'react-redux';
-<<<<<<< Updated upstream
 import LogoImg from '../../images/ui/cartoon.png'
 import MagnifierImg from '../../images/ui/magnifier-2.png'
 import Slider from '@material-ui/core/Slider';
@@ -20,7 +19,6 @@ import right from '../../images/directions/right.png'
 import ZoomContext from "../ZoomContext/ZoomContext";
 import FontSizeScale from "../FontSizeScale";
 
-=======
 import {
     BrowserRouter as Router,
     Switch,
@@ -28,7 +26,6 @@ import {
     NavLink,
     Redirect
   } from "react-router-dom";
->>>>>>> Stashed changes
 
 const cx = classNames.bind(styles);
 
@@ -150,7 +147,6 @@ class preKioskView extends React.Component {
     render() {
         return (
             <div className={cx('kiosk-view')}>
-<<<<<<< Updated upstream
                 {/* header */}
                 <div className={cx('header')}>
                     <img className={cx('logo')} src={LogoImg} alt=""/>
@@ -164,29 +160,6 @@ class preKioskView extends React.Component {
                     </div>
                     <Slider className={cx('zoom-slider')} step={1} max={4} marks onChange={this.onZoomSliderChange}
                             value={this.state.zoom_level}/>
-=======
-                <table className={cx('category-select-buttons-table')}>
-                    <tr>
-
-                        {(this.categories.map(d => <td><CategorySelectButton className={cx('csb')} category={d.category} text={d.text}
-                                                                             onCategorySelect={this.changeCategory}
-                                                                             selectedCategory={this.state.category}/>
-                        </td>))}
-                    </tr>
-                </table>
-                <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
-                <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
-                {this.state.help}
-                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
-                <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
-                
-                <div className={cx('button-box')}>
-                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
-                <HelpButton message={'What should I do?'}/>
-                <NavLink to="/components/PaymentView" style={{ textDecoration: 'none' ,color: 'black' }}>
-                <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
-                </NavLink>
->>>>>>> Stashed changes
                 </div>
 
                 {/* category selector buttons*/}
@@ -210,7 +183,7 @@ class preKioskView extends React.Component {
                                 <SelectListView id='selectlist' menuIds={MenuData.categoryMenus[this.state.category]}/>
 
                                 {this.state.help}
-                                <div className={cx('total-prize')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p>
+                                <div className={cx('total-price')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p>
                                 </div>
                                 <div>&emsp;</div>
                                 <button className={cx('help-button')}
@@ -225,9 +198,9 @@ class preKioskView extends React.Component {
                                 {this.state.hand6}
                                 {this.state.hand7}
                                 {this.state.hand8}
-                                <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
-                                }}> Payment
-                                </div>
+                                <NavLink to="/components/PaymentView" style={{ textDecoration: 'none' ,color: 'black' }}>
+                                    <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
+                                </NavLink>
                                 <div>{this.state.help}</div>
                             </FontSizeScale>
                         }
