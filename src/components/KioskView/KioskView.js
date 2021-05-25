@@ -16,6 +16,8 @@ import up from '../../images/directions/up.png'
 import down from '../../images/directions/down.png'
 import left from '../../images/directions/left.png'
 import right from '../../images/directions/right.png'
+import ZoomContext from "../ZoomContext/ZoomContext";
+import FontSizeScale from "../FontSizeScale";
 
 
 const cx = classNames.bind(styles);
@@ -34,7 +36,8 @@ class preKioskView extends React.Component {
             hand5: '', 
             hand6: '', 
             hand7: '', 
-            hand8: ''
+            hand8: '',
+            zoom_level: 2
         };
         this.changeCategory = this.changeCategory.bind(this);
         this.helpButtonClick = this.helpButtonClick.bind(this);
@@ -116,13 +119,20 @@ class preKioskView extends React.Component {
 
     }
 
-    getScale(step) {
-        return 0.4 + step * 0.3;
+    getScale(level) {
+        const scaleMap={
+            0: 0.6,
+            1: 0.8,
+            2: 1,
+            3: 1.4,
+            4: 1.8,
+        }
+        return scaleMap[level];
     }
 
     onZoomSliderChange(event, newValue) {
         this.setState({
-            zoom_step: newValue,
+            zoom_level: newValue,
         })
     }
 
@@ -141,7 +151,7 @@ class preKioskView extends React.Component {
                         <div className={cx('inner-text')}> +</div>
                     </div>
                     <Slider className={cx('zoom-slider')} step={1} max={4} marks onChange={this.onZoomSliderChange}
-                            value={this.state.zoom_step}/>
+                            value={this.state.zoom_level}/>
                 </div>
 
                 {/* category selector buttons*/}
