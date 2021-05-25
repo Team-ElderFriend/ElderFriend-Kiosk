@@ -7,6 +7,7 @@ import SelectListView from "../SelectListView";
 import MenuData from "../../data/MenuData";
 import Step from "../Step";
 import HelpButton from "../HelpButton";
+import {connect} from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -82,14 +83,7 @@ class KioskView extends React.Component {
                 }, 5000);
             }, 5000);
         }, 5000);
-        /*
-        ;
-        setTimeout(() => this.setState({help: this.helpMessages[3]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[4]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[5]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[6]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[7]}), 5000);     
-        */  
+        
     }
 
     render() {
@@ -106,15 +100,11 @@ class KioskView extends React.Component {
                 </table>
                 <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
-                {this.state.help}
-                <div></div>
-                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
-                <div className={cx('kiosk-button', 'add-item-button')} onClick={()=>{}}> Add item to list </div>
                 
-                <div className={cx('button-box')}>
-                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
-                <HelpButton message={'What should I do?'}/>
+                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>                
+                <div className={cx('button-box')}></div>
                 <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
+                <div>{this.state.help}</div>
             </div>
         );
     }
