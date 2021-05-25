@@ -12,6 +12,12 @@ import LogoImg from '../../images/ui/cartoon.png'
 import MagnifierImg from '../../images/ui/magnifier-2.png'
 import Slider from '@material-ui/core/Slider';
 
+import up from '../../images/directions/up.png'
+import down from '../../images/directions/down.png'
+import left from '../../images/directions/left.png'
+import right from '../../images/directions/right.png'
+
+
 const cx = classNames.bind(styles);
 
 
@@ -20,7 +26,7 @@ class preKioskView extends React.Component {
         super(props);
         this.state = {
             category: 'recommended',
-            help: '',
+            help: <div>&emsp;</div>,
             zoom_step: 1,
         };
         this.changeCategory = this.changeCategory.bind(this);
@@ -88,14 +94,7 @@ class preKioskView extends React.Component {
                 }, 5000);
             }, 5000);
         }, 5000);
-        /*
-        ;
-        setTimeout(() => this.setState({help: this.helpMessages[3]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[4]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[5]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[6]}), 5000);
-        setTimeout(() => this.setState({help: this.helpMessages[7]}), 5000);
-        */
+
     }
 
     getScale(step) {
@@ -139,19 +138,15 @@ class preKioskView extends React.Component {
                 </table>
                 <MenuListView menuIds={MenuData.categoryMenus[this.state.category]}/>
                 <SelectListView menuIds={MenuData.categoryMenus[this.state.category]}/>
-                {this.state.help}
-                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
-                <div className={cx('kiosk-button', 'add-item-button')} onClick={() => {
-                }}> Add item to list
-                </div>
 
-                <div className={cx('button-box')}>
-                    <div className={cx('total-prize')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p></div>
-                    <HelpButton message={'What should I do?'}/>
-                    <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
-                    }}> Payment
-                    </div>
-                </div>
+                {this.state.help}
+                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
+                <div>&emsp;</div>
+                <button className={cx('help-button')} onClick={this.helpButtonClick}>{'What should I do?'}</button>
+                <div className={cx('button-box')}></div>
+                <div>&emsp;</div>
+                <div className={cx('kiosk-button', 'payment-button')} onClick={()=>{}}> Payment </div>
+                <div>{this.state.help}</div>
             </div>
         );
     }
@@ -166,3 +161,4 @@ const mapStateToProps = function (state) {
 const KioskView = connect(mapStateToProps)(preKioskView)
 
 export default KioskView
+

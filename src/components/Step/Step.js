@@ -34,7 +34,6 @@ const Step = ({step, dir, message}) => {
     if (dir == 'down' || dir == 'left') {
         return (
             <div>
-                <img className={cx(dir)} alt='' src={dir == 'down' ? down : left} />
                 &emsp;
                 <div className={cx('step-message')}>{'Step ' + step + ': ' + message}</div>
             </div>
@@ -45,7 +44,6 @@ const Step = ({step, dir, message}) => {
             <div>
                 <div className={cx('step-message')}>{'Step ' + step + ': ' + message}</div>
                 &emsp;
-                <img className={cx(dir)} alt='' src={dir == 'up' ? up : right} />
             </div>
         )
     }
