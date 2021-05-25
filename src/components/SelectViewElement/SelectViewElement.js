@@ -18,6 +18,7 @@ const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, count
                    <i  className="fas fa-minus-circle"  onClick={()=>dispatch(reduce(menuId))}></i> 
                     </span>
                     {counter.selectedMenus.find(element => element.id === menuId).number}
+                    
                     <span className={cx('plus-box')}>
                     <i  className="fas fa-plus-circle"  onClick={()=>dispatch(add(menuId, menuPrice))}></i>
                     </span>
