@@ -11,6 +11,8 @@ import {connect} from 'react-redux';
 import LogoImg from '../../images/ui/cartoon.png'
 import MagnifierImg from '../../images/ui/magnifier-2.png'
 import Slider from '@material-ui/core/Slider';
+import {withRouter} from 'react-router';
+
 
 import up from '../../images/directions/up.png'
 import down from '../../images/directions/down.png'
@@ -75,14 +77,14 @@ class preKioskView extends React.Component {
 
         this.hands = [
             '',
-            <img className={cx('step-1')} src={up} alt={''}/>,
-            <img className={cx('step-2')} src={up} alt={''}/>,
-            <img className={cx('step-3')} src={up} alt={''}/>,
-            <img className={cx('step-4')} src={up} alt={''}/>,
-            <img className={cx('step-5')} src={up} alt={''}/>,
-            <img className={cx('step-6')} src={up} alt={''}/>,
-            <img className={cx('step-7')} src={up} alt={''}/>,
-            <img className={cx('step-8')} src={up} alt={''}/>,
+            <img className={cx('step-1', 'hand')} src={up} alt={''}/>,
+            <img className={cx('step-2', 'hand')} src={up} alt={''}/>,
+            <img className={cx('step-3', 'hand')} src={up} alt={''}/>,
+            <img className={cx('step-4', 'hand')} src={up} alt={''}/>,
+            <img className={cx('step-5', 'hand')} src={up} alt={''}/>,
+            <img className={cx('step-6', 'hand')} src={up} alt={''}/>,
+            <img className={cx('step-7', 'hand')} src={up} alt={''}/>,
+            <img className={cx('step-8', 'hand')} src={up} alt={''}/>,
         ]
 
         this.helpMessages = [
@@ -104,8 +106,6 @@ class preKioskView extends React.Component {
     }
 
     helpButtonClick() {
-        //this.dispatch(add(2, 100))
-        // this.setState({selectedMenus: [{id: 1, number: 2}]})
         this.setState({hand1: this.hands[1]});
         this.setState({help: this.helpMessages[0]})
         setTimeout(() => {
@@ -128,7 +128,6 @@ class preKioskView extends React.Component {
                                 this.setState({help: this.helpMessages[6], hand6: '', hand7: this.hands[7]});
                                 this.dispatch(add(17, 3100));
                                 setTimeout(() => {
-                                    <Redirect to="/components/PaymentView"/>
                                     this.setState({help: this.helpMessages[7], hand7: '', hand8: this.hands[8]});
                                     setTimeout(() => {
                                         this.dispatch(remove(2));
@@ -177,18 +176,40 @@ class preKioskView extends React.Component {
     }
 
     render() {
-        const categoryTableButtonMapper = d => <td><CategorySelectButton className={cx('csb')}
-                                                                         category={d.category}
-                                                                         text={d.text}
-                                                                         onCategorySelect={this.changeCategory}
-                                                                         selectedCategory={this.state.category}/></td>
+        const categoryTableButtonMapper = (d, ind) => <td><CategorySelectButton className={cx('csb')}
+                                                                                category={d.category}
+                                                                                onCategorySelect={this.changeCategory}
+                                                                                selectedCategory={this.state.category}>
+            {d.text}
+            {(ind === 1) ? this.state.hand1 : ''}
+            {(ind === 2) ? this.state.hand4 : ''}
+        </CategorySelectButton>
+        </td>
         const categoryTableContent = this.state.zoom_level >= 4 ?
             ([<tr>{this.categories.slice(0, 2).map(categoryTableButtonMapper)}</tr>,
-                <tr>{this.categories.slice(2, 4).map(categoryTableButtonMapper)}</tr>]) :
+                <tr>{this.categories.map((val, ind) => {
+                    return {val, ind}
+                }).slice(2, 4).map(({val, ind}) => categoryTableButtonMapper(val, ind))}</tr>]) :
             <tr>
-            {(this.categories.map(categoryTableButtonMapper))}
-        </tr>
+                {(this.categories.map(categoryTableButtonMapper))}
+            </tr>
 
+        const handInserterToMenu = (ind) => {
+            if (this.state.category === 'burgers' && ind === 1)
+                return this.state.hand2
+            if (this.state.category === 'sideMenus' && ind === 1)
+                return this.state.hand5;
+
+            return ''
+        }
+
+        const handInserterToAddButton = (ind) => {
+            if (this.state.category === 'burgers' && ind === 1)
+                return this.state.hand3;
+            if (this.state.category === 'sideMenus' && ind === 1)
+                return this.state.hand6;
+            return ''
+        }
 
         return (
             <div className={cx('kiosk-view')}>
@@ -207,17 +228,19 @@ class preKioskView extends React.Component {
                             value={this.state.zoom_level}/>
                 </div>
 
-                {/* category selector buttons*/}
                 <ZoomContext.Provider
                     value={{zoom_level: this.state.zoom_level, zoom_scale: this.getScale(this.state.zoom_level)}}>
                     <ZoomContext.Consumer>
                         {({zoom_level, zoom_scale}) => {
                             return <FontSizeScale scale={zoom_scale}>
+                                {/* category selector buttons*/}
                                 <table className={cx('category-select-buttons-table')}
                                        style={{height: this.getCategoryButtonHeight(zoom_level) + 'px'}}>
                                     {categoryTableContent}
                                 </table>
-                                <MenuListView id='menulist' menuIds={MenuData.categoryMenus[this.state.category]}/>
+                                <MenuListView id='menulist' menuIds={MenuData.categoryMenus[this.state.category]}
+                                              getInsertedFromInd={handInserterToMenu}
+                                              getInsertedToAddButtonFromInd={handInserterToAddButton}/>
                                 <SelectListView id='selectlist' menuIds={MenuData.categoryMenus[this.state.category]}/>
 
                                 {this.state.help}
@@ -228,19 +251,11 @@ class preKioskView extends React.Component {
                                         onClick={this.helpButtonClick}>{'What should I do?'}</button>
                                 <div className={cx('button-box')}></div>
                                 <div>&emsp;</div>
-                                <div style={{display: 'inner', pointerEvents: 'none'}}>
-                                {this.state.hand1}
-                                {this.state.hand2}
-                                {this.state.hand3}
-                                {this.state.hand4}
-                                {this.state.hand5}
-                                {this.state.hand6}
-                                {this.state.hand7}
-                                {this.state.hand8}
-                                </div>
                                 <NavLink to="/components/PaymentView" style={{textDecoration: 'none', color: 'black'}}>
                                     <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
                                     }}> Payment
+                                        {this.state.hand7}
+                                        {this.state.hand8}
                                     </div>
                                 </NavLink>
                                 <div>{this.state.help}</div>
