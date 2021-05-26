@@ -25,7 +25,8 @@ import {
     Switch,
     Route,
     NavLink,
-    Redirect
+    Redirect, 
+    Link
 } from "react-router-dom";
 import {add, remove, reduce} from "../../actions";
 
@@ -127,7 +128,7 @@ class preKioskView extends React.Component {
                                 this.setState({help: this.helpMessages[6], hand6: '', hand7: this.hands[7]});
                                 this.dispatch(add(17, 3100));
                                 setTimeout(() => {
-                                    
+                                    <Redirect to="/components/PaymentView"/>
                                     this.setState({help: this.helpMessages[7], hand7: '', hand8: this.hands[8]});
                                     setTimeout(() => {
                                         this.dispatch(remove(2));
