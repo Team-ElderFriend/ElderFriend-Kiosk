@@ -27,12 +27,13 @@ import {
     NavLink,
     Redirect
 } from "react-router-dom";
+import {add} from "../../actions";
 
 const cx = classNames.bind(styles);
 
 
 class preKioskView extends React.Component {
-    constructor(props) {
+    constructor({dispatch, ...props}) {
         super(props);
         this.state = {
             category: 'recommended',
@@ -50,6 +51,7 @@ class preKioskView extends React.Component {
         this.changeCategory = this.changeCategory.bind(this);
         this.helpButtonClick = this.helpButtonClick.bind(this);
         this.onZoomSliderChange = this.onZoomSliderChange.bind(this);
+        this.dispatch = dispatch
 
         this.categories = [
             {
@@ -101,6 +103,8 @@ class preKioskView extends React.Component {
     }
 
     helpButtonClick() {
+        this.dispatch(add(1, 100))
+        // this.setState({selectedMenus: [{id: 1, number: 2}]})
         this.setState({hand1: this.hands[1]});
         this.setState({help: this.helpMessages[0]})
         setTimeout(() => {
