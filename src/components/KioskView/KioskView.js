@@ -216,6 +216,7 @@ class preKioskView extends React.Component {
                                         onClick={this.helpButtonClick}>{'What should I do?'}</button>
                                 <div className={cx('button-box')}></div>
                                 <div>&emsp;</div>
+                                <div style={{display: 'inner', pointerEvents: 'none'}}>
                                 {this.state.hand1}
                                 {this.state.hand2}
                                 {this.state.hand3}
@@ -224,6 +225,7 @@ class preKioskView extends React.Component {
                                 {this.state.hand6}
                                 {this.state.hand7}
                                 {this.state.hand8}
+                                </div>
                                 <NavLink to="/components/PaymentView" style={{textDecoration: 'none', color: 'black'}}>
                                     <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
                                     }}> Payment
