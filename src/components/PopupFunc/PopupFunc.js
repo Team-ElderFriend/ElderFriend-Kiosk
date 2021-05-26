@@ -32,7 +32,7 @@ const qmbtn = (e) => {
     var im = document.getElementsByClassName("info-picture")[0];
     var fs = document.getElementsByClassName("font-size-scale")[0];
     var info = document.getElementsByClassName("ctxt")[0];
-    var name = e.target.parentElement.innerHTML.split("  <")[0];
+    var name = e.target.parentElement.innerHTML.split(" <")[0];
 
     name = name.replace("&amp;", "&");
 
