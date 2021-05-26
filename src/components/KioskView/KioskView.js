@@ -27,7 +27,7 @@ import {
     NavLink,
     Redirect
 } from "react-router-dom";
-import {add} from "../../actions";
+import {add, remove, reduce} from "../../actions";
 
 const cx = classNames.bind(styles);
 
@@ -103,7 +103,7 @@ class preKioskView extends React.Component {
     }
 
     helpButtonClick() {
-        this.dispatch(add(1, 100))
+        //this.dispatch(add(2, 100))
         // this.setState({selectedMenus: [{id: 1, number: 2}]})
         this.setState({hand1: this.hands[1]});
         this.setState({help: this.helpMessages[0]})
@@ -113,6 +113,7 @@ class preKioskView extends React.Component {
                 this.setState({help: this.helpMessages[2], hand2: '', hand3: this.hands[3]});
                 setTimeout(() => {
                     this.setState({help: this.helpMessages[3], hand3: '', hand4: this.hands[4]});
+                    this.dispatch(add(2, 6400));
                     setTimeout(() => {
                         this.setState({
                             category: 'sideMenus',
@@ -124,13 +125,19 @@ class preKioskView extends React.Component {
                             this.setState({help: this.helpMessages[5], hand5: '', hand6: this.hands[6]});
                             setTimeout(() => {
                                 this.setState({help: this.helpMessages[6], hand6: '', hand7: this.hands[7]});
+                                this.dispatch(add(17, 3100));
                                 setTimeout(() => {
+                                    
                                     this.setState({help: this.helpMessages[7], hand7: '', hand8: this.hands[8]});
-                                    setTimeout(() => this.setState({
-                                        category: 'recommended',
-                                        help: <div>&emsp;</div>,
-                                        hand8: ''
-                                    }), 3000);
+                                    setTimeout(() => {
+                                        this.dispatch(remove(2));
+                                        this.dispatch(remove(17));
+                                        this.setState({
+                                            category: 'recommended',
+                                            help: <div>&emsp;</div>,
+                                            hand8: ''
+                                        });
+                                    }, 3000);
                                 }, 3000);
                             }, 3000);
                         }, 3000);
