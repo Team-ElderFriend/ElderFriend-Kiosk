@@ -5,7 +5,8 @@
   //font-family: , serif;
 
   width: 81px;
-  height: 113px;
+  height: 120px;
+  text-align: center;
 
 
   .inner-box {
@@ -17,15 +18,26 @@
 
     color: #000000;
 
-
+    .add-reduce-box{
+      object-fit: contain;
+      width: 100%;
+      height: 10%;
+      
+      font-size: 150%;
+      font-weight: bold;
+      z-index: 10;
+      position:relative;
+    }
     .image{
       object-fit: contain;
       width: 100%;
       height: 44%;
+      z-index: 5;
+      position:relative;
     }
     .name-label{
       font-size: 100%;
-      height: 30%;
+      height: 25%;
       font-weight: bold;
       text-align: center;
       line-height: 110%;
@@ -36,6 +48,7 @@
       font-size: 150%;
       font-weight: bold;
       text-align: center;
+      padding-bottom:10%
     }
   }
 

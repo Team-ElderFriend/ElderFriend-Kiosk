@@ -12,7 +12,12 @@ const cx = classNames.bind(styles);
 const preFinalSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, counter, dispatch, ...props}) => {
     return (
         <div className={cx('final-select-view-element-outer-box')} {...props}>
+
+            
             <div className={cx('inner-box')}>
+            <div className={cx('add-reduce-box')}>
+                {counter.selectedMenus.find(element => element.id === menuId).number}
+            </div>
                 <img alt="" className={cx('image')} src={imageSrc}/>
                 <div className={cx('name-label')}>
                     {menuName}  <i onClick={qmbtn} className="far fa-question-circle"></i>
