@@ -19,7 +19,7 @@ const preSelectListView = ({menuIds, counter,...props}) => {
                     counter.selectedMenus.map((menu) => {
                         return (
                             <div className={cx('slot')}>
-                                <SelectViewElement menuId={menu.id}/>
+                                <SelectViewElement menuNumber={counter.selectedMenus.find(element => element.id === menu.id).number} menuId={menu.id}/>
                             </div>
                         )
                     })

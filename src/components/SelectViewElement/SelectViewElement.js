@@ -34,7 +34,7 @@ function getSize(zoomLevel) {
     }[zoomLevel]
 }
 
-const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, counter, dispatch, ...props}) => {
+const preSelectViewInnerElement = ({menuId, menuNumber, menuName, menuPrice, imageSrc, counter, dispatch, ...props}) => {
     return (
         <ZoomContext.Consumer>
             {
@@ -46,7 +46,7 @@ const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, count
                     <span className={cx('minus-box')}>
                    <i className="fas fa-minus-circle" onClick={() => dispatch(reduce(menuId))}></i>
                     </span>
-                                {counter.selectedMenus.find(element => element.id === menuId).number}
+                                {menuNumber}
 
                                 <span className={cx('plus-box')}>
                     <i className="fas fa-plus-circle" onClick={() => dispatch(add(menuId, menuPrice))}></i>
@@ -81,10 +81,10 @@ const mapStateToProps = function (state) {
   const SelectViewInnerElement = connect(mapStateToProps)(preSelectViewInnerElement)
 
 
-const SelectViewElement = ({menuId})=>{
+const SelectViewElement = ({menuId, menuNumber})=>{
     const menu = menuData.menus[menuId];
     return (
-        <SelectViewInnerElement menuId={menuId} menuName={menu.menuName} menuPrice={menu.menuPrice} imageSrc={menu.imgSrc}/>
+        <SelectViewInnerElement menuId={menuId} menuNumber={menuNumber} menuName={menu.menuName} menuPrice={menu.menuPrice} imageSrc={menu.imgSrc}/>
     )
 }
 
