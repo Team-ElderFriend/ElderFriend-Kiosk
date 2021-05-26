@@ -35,7 +35,17 @@ function getSize(zoomLevel) {
     }[zoomLevel]
 }
 
-const preMenuViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, counter, dispatch, ...props}) => {
+const preMenuViewInnerElement = ({
+                                     insertToAddButton,
+                                     children,
+                                     menuId,
+                                     menuName,
+                                     menuPrice,
+                                     imageSrc,
+                                     counter,
+                                     dispatch,
+                                     ...props
+                                 }) => {
     return (
         <ZoomContext.Consumer>
             {
@@ -54,10 +64,13 @@ const preMenuViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, counter
                                 </div>
                                 <div className={cx('add-box')}>
                                     <button className={cx('add-button')}
-                                            onClick={() => dispatch(add(menuId, menuPrice))}>Add
+                                            onClick={() => dispatch(add(menuId, menuPrice))}>
+                                        Add
+                                        {insertToAddButton}
                                     </button>
                                 </div>
                             </div>
+                            {children}
                         </div>)
                 }}
         </ZoomContext.Consumer>
@@ -73,11 +86,13 @@ const mapStateToProps = function (state) {
 }
 const MenuViewInnerElement = connect(mapStateToProps)(preMenuViewInnerElement)
 
-const MenuViewElement = ({menuId}) => {
+const MenuViewElement = ({children, insertToAddButton, menuId}) => {
     const menu = menuData.menus[menuId];
     return (
         <MenuViewInnerElement menuId={menuId} menuName={menu.menuName} menuPrice={menu.menuPrice}
-                              imageSrc={menu.imgSrc}/>
+                              imageSrc={menu.imgSrc} insertToAddButton={insertToAddButton}>
+            {children}
+        </MenuViewInnerElement>
     )
 }
 
