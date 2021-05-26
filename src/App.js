@@ -11,7 +11,7 @@ import {
     Route,
     Link,
     Redirect
-  } from "react-router-dom";
+} from "react-router-dom";
 
 
 function App() {
@@ -20,31 +20,31 @@ function App() {
             <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet"></link>
 
             <div className="dim-layer">
-            <div className="dimBg"></div>
-            <div id="layer2" className="pop-layer">
-                <div className="pop-container">
-                <div className="pop-conts">
-                    <img className="info-picture" src="../images/menus/Jalapeno.png" alt=""></img>
-                    <p className="ctxt">    
-                    </p>
-                    <div className="btn-r">
-                    <a onClick={clbtn} className="btn-layerClose">Close</a>
+                <div className="dimBg"></div>
+                <div id="layer2" className="pop-layer">
+                    <div className="pop-container">
+                        <div className="pop-conts">
+                            <img className="info-picture" src="../images/menus/Jalapeno.png" alt=""></img>
+                            <p className="ctxt">
+                            </p>
+                            <div className="btn-r">
+                                <a onClick={clbtn} className="btn-layerClose">Close</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
             </div>
             <Router>
                 <Switch>
-                <Route exact path="/" component={KioskView}>
-            <KioskView/>
-            </Route>
-              <Route exact path="/components/PaymentView" component={PaymentView}>
-                <PaymentView/>
-                  </Route>
-                  <Route exact path="/components/SuccessView" component={SuccessView}>
-                <SuccessView/>
-                  </Route>
+                    <Route exact path="/components/PaymentView">
+                        <PaymentView/>
+                    </Route>
+                    <Route exact path="/components/SuccessView">
+                        <SuccessView/>
+                    </Route>
+                    <Route path="/" >
+                        <KioskView/>
+                    </Route>
                 </Switch>
             </Router>
         </div>
