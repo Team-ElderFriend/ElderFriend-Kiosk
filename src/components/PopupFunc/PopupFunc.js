@@ -30,6 +30,7 @@ const qmbtn = (e) => {
     var l2 = document.getElementById("layer2");
     var dl = document.getElementsByClassName("dim-layer")[0];
     var im = document.getElementsByClassName("info-picture")[0];
+    var fs = document.getElementsByClassName("font-size-scale")[0];
     var info = document.getElementsByClassName("ctxt")[0];
     var name = e.target.parentElement.innerHTML.split("  <")[0];
 
@@ -39,6 +40,7 @@ const qmbtn = (e) => {
         if(menuData.menus[key].menuName == name) {
             im.src = menuData.menus[key].infoImg;
             info.innerHTML = menuData.menus[key].info;
+            info.style.fontSize = fs.style.fontSize;
         }
     });
 
