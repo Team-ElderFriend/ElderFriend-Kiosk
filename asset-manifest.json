@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/ElderFriend-Kiosk/static/css/main.c7110b41.chunk.css",
-    "main.js": "/ElderFriend-Kiosk/static/js/main.76ab5d81.chunk.js",
-    "main.js.map": "/ElderFriend-Kiosk/static/js/main.76ab5d81.chunk.js.map",
+    "main.css": "/ElderFriend-Kiosk/static/css/main.f071ff7c.chunk.css",
+    "main.js": "/ElderFriend-Kiosk/static/js/main.c2d15082.chunk.js",
+    "main.js.map": "/ElderFriend-Kiosk/static/js/main.c2d15082.chunk.js.map",
     "runtime-main.js": "/ElderFriend-Kiosk/static/js/runtime-main.5a86f0e4.js",
     "runtime-main.js.map": "/ElderFriend-Kiosk/static/js/runtime-main.5a86f0e4.js.map",
     "static/js/2.44aff2b1.chunk.js": "/ElderFriend-Kiosk/static/js/2.44aff2b1.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.250e2bed.chunk.js": "/ElderFriend-Kiosk/static/js/3.250e2bed.chunk.js",
     "static/js/3.250e2bed.chunk.js.map": "/ElderFriend-Kiosk/static/js/3.250e2bed.chunk.js.map",
     "index.html": "/ElderFriend-Kiosk/index.html",
-    "static/css/main.c7110b41.chunk.css.map": "/ElderFriend-Kiosk/static/css/main.c7110b41.chunk.css.map",
+    "static/css/main.f071ff7c.chunk.css.map": "/ElderFriend-Kiosk/static/css/main.f071ff7c.chunk.css.map",
     "static/js/2.44aff2b1.chunk.js.LICENSE.txt": "/ElderFriend-Kiosk/static/js/2.44aff2b1.chunk.js.LICENSE.txt",
     "static/media/Jalapeno.a39443ff.png": "/ElderFriend-Kiosk/static/media/Jalapeno.a39443ff.png",
     "static/media/Jalapeno.cbf62e0d.png": "/ElderFriend-Kiosk/static/media/Jalapeno.cbf62e0d.png",
@@ -55,7 +55,7 @@
   "entrypoints": [
     "static/js/runtime-main.5a86f0e4.js",
     "static/js/2.44aff2b1.chunk.js",
-    "static/css/main.c7110b41.chunk.css",
-    "static/js/main.76ab5d81.chunk.js"
+    "static/css/main.f071ff7c.chunk.css",
+    "static/js/main.c2d15082.chunk.js"
   ]
 }
