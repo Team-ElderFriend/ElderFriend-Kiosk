@@ -40,7 +40,7 @@ class preKioskView extends React.Component {
         super(props);
         this.state = {
             category: 'recommended',
-            help: <div>&emsp;</div>,
+            help: ''/*<div>&emsp;</div>*/,
             hand1: '',
             hand2: '',
             hand3: '',
@@ -248,7 +248,8 @@ class preKioskView extends React.Component {
                                 </div>
                                 <div>&emsp;</div>
                                 <button className={cx('help-button')}
-                                        onClick={this.helpButtonClick}>{'What should I do?'}</button>
+                                        onClick={this.helpButtonClick} style={{
+                                    height: 59*(1+ (zoom_scale-1)*0.6) + 'px'}}>{'What should I do?'}</button>
                                 <div className={cx('button-box')}></div>
                                 <div>&emsp;</div>
                                 <NavLink to="/components/PaymentView" style={{textDecoration: 'none', color: 'black'}}>

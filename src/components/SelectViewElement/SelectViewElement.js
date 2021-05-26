@@ -5,36 +5,70 @@ import menuData from "../../data/MenuData"
 import {qmbtn, clbtn} from '../PopupFunc';
 import {connect} from 'react-redux';
 import {add, reduce, remove} from '../../actions';
-
+import ZoomContext from "../ZoomContext";
 const cx = classNames.bind(styles);
 
+function getSize(zoomLevel) {
+    return {
+        0: {
+            width: 67,
+            height: 135,
+        },
+        1: {
+            width: 67,
+            height: 135,
+        },
+        2: {
+            width: 70,
+            height: 180,
+        },
+        3: {
+            width: 104,
+            height: 260,
+        },
+        4: {
+            width: 160,
+            height: 350,
+        },
+
+    }[zoomLevel]
+}
 
 const preSelectViewInnerElement = ({menuId, menuName, menuPrice, imageSrc, counter, dispatch, ...props}) => {
     return (
-        <div className={cx('select-view-element-outer-box')} {...props}>
-            <div className={cx('inner-box')}>
-                <div className={cx('add-reduce-box')}>
+        <ZoomContext.Consumer>
+            {
+                ({zoom_level}) => {
+                    const size = getSize(zoom_level)
+                    return <div className={cx('select-view-element-outer-box')} {...props} style={{width:size.width+'px', height: size.height+'px'}}>
+                        <div className={cx('inner-box')}>
+                            <div className={cx('add-reduce-box')}>
                     <span className={cx('minus-box')}>
-                   <i  className="fas fa-minus-circle"  onClick={()=>dispatch(reduce(menuId))}></i> 
+                   <i className="fas fa-minus-circle" onClick={() => dispatch(reduce(menuId))}></i>
                     </span>
-                    {counter.selectedMenus.find(element => element.id === menuId).number}
-                    
-                    <span className={cx('plus-box')}>
-                    <i  className="fas fa-plus-circle"  onClick={()=>dispatch(add(menuId, menuPrice))}></i>
+                                {counter.selectedMenus.find(element => element.id === menuId).number}
+
+                                <span className={cx('plus-box')}>
+                    <i className="fas fa-plus-circle" onClick={() => dispatch(add(menuId, menuPrice))}></i>
                     </span>
-                </div>
-                <img alt="" className={cx('image')} src={imageSrc}/>
-                <div className={cx('name-label')}>
-                    {menuName}  <i onClick={qmbtn} className="far fa-question-circle"></i>
-                </div>
-                <div className={cx('price-label')}>
-                    ₩{menuPrice}
-                </div>
-                <div className={cx('remove-box')}>
-                    <button className={cx('remove-button')} onClick={()=> dispatch(remove(menuId))}>Remove</button>
-                </div>
-            </div>
-        </div>
+                            </div>
+                            <img alt="" className={cx('image')} src={imageSrc}/>
+                            <div className={cx('name-label')}>
+                                {menuName} <i onClick={qmbtn} className="far fa-question-circle"></i>
+                            </div>
+                            <div className={cx('price-label')}>
+                                ₩{menuPrice}
+                            </div>
+                            <div className={cx('remove-box')}>
+                                <button className={cx('remove-button')}
+                                        onClick={() => dispatch(remove(menuId))}>Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+                </ZoomContext.Consumer>
     )
 };
 
