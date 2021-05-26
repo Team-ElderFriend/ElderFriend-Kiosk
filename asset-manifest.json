@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ElderFriend-Kiosk/static/css/main.fea7f774.chunk.css",
-    "main.js": "/ElderFriend-Kiosk/static/js/main.8a4c45d7.chunk.js",
-    "main.js.map": "/ElderFriend-Kiosk/static/js/main.8a4c45d7.chunk.js.map",
+    "main.js": "/ElderFriend-Kiosk/static/js/main.d292f2fe.chunk.js",
+    "main.js.map": "/ElderFriend-Kiosk/static/js/main.d292f2fe.chunk.js.map",
     "runtime-main.js": "/ElderFriend-Kiosk/static/js/runtime-main.5a86f0e4.js",
     "runtime-main.js.map": "/ElderFriend-Kiosk/static/js/runtime-main.5a86f0e4.js.map",
     "static/js/2.9f78c8cd.chunk.js": "/ElderFriend-Kiosk/static/js/2.9f78c8cd.chunk.js",
@@ -56,6 +56,6 @@
     "static/js/runtime-main.5a86f0e4.js",
     "static/js/2.9f78c8cd.chunk.js",
     "static/css/main.fea7f774.chunk.css",
-    "static/js/main.8a4c45d7.chunk.js"
+    "static/js/main.d292f2fe.chunk.js"
   ]
 }
