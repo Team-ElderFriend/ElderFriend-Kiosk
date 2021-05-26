@@ -174,13 +174,15 @@ class preKioskView extends React.Component {
                                                                                 onCategorySelect={this.changeCategory}
                                                                                 selectedCategory={this.state.category}>
             {d.text}
-            {(ind !== 1) ? '' : this.state.hand1}
-            {(ind !== 2) ? '' : this.state.hand4}
+            {(ind === 1) ? this.state.hand1 : ''}
+            {(ind === 2) ? this.state.hand4 : ''}
         </CategorySelectButton>
         </td>
         const categoryTableContent = this.state.zoom_level >= 4 ?
             ([<tr>{this.categories.slice(0, 2).map(categoryTableButtonMapper)}</tr>,
-                <tr>{this.categories.slice(2, 4).map(categoryTableButtonMapper)}</tr>]) :
+                <tr>{this.categories.map((val, ind) => {
+                    return {val, ind}
+                }).slice(2, 4).map(({val, ind}) => categoryTableButtonMapper(val, ind))}</tr>]) :
             <tr>
                 {(this.categories.map(categoryTableButtonMapper))}
             </tr>
@@ -219,18 +221,19 @@ class preKioskView extends React.Component {
                             value={this.state.zoom_level}/>
                 </div>
 
-                {/* category selector buttons*/}
                 <ZoomContext.Provider
                     value={{zoom_level: this.state.zoom_level, zoom_scale: this.getScale(this.state.zoom_level)}}>
                     <ZoomContext.Consumer>
                         {({zoom_level, zoom_scale}) => {
                             return <FontSizeScale scale={zoom_scale}>
+                                {/* category selector buttons*/}
                                 <table className={cx('category-select-buttons-table')}
                                        style={{height: this.getCategoryButtonHeight(zoom_level) + 'px'}}>
                                     {categoryTableContent}
                                 </table>
                                 <MenuListView id='menulist' menuIds={MenuData.categoryMenus[this.state.category]}
-                                              getInsertedFromInd={handInserterToMenu} getInsertedToAddButtonFromInd={handInserterToAddButton}/>
+                                              getInsertedFromInd={handInserterToMenu}
+                                              getInsertedToAddButtonFromInd={handInserterToAddButton}/>
                                 <SelectListView id='selectlist' menuIds={MenuData.categoryMenus[this.state.category]}/>
 
                                 {this.state.help}
