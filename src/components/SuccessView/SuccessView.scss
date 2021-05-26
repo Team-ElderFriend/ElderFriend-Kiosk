@@ -1,0 +1,33 @@
+.success-view{
+    width: 427px;
+    height: 774px;
+    border:1px solid green;
+    position: absolute;
+    left: 50%;
+    margin-left: -214.5px;
+    font-size:50 px;
+    .correct{
+        font-size: 700%;
+        color: green;
+    }
+    .correct-text{
+        font-size:200%;
+        margin-bottom: 5%;
+        height: 20%;
+        color: black;
+        .total-price{
+            font-weight: bold;
+        }
+    }
+    .return-button{
+        background-color: orange;
+        margin-top: 20%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 5%;
+        border: 1px solid black;
+        border-radius: 5px;
+        font-size: 200%;
+    }
+
+}

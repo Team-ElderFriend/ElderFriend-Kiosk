@@ -29,7 +29,9 @@ class prePaymentView extends React.Component {
                 <NavLink to="/" style={{ textDecoration: 'none' ,color: 'black' }}>
                 <div className={cx('cancel-button')}>Cancel</div>
                 </NavLink>
+                <NavLink to="/components/SuccessView" style={{ textDecoration: 'none' ,color: 'black' }}>
                 <div className={cx('confirm-button')}>Confirm</div>
+                </NavLink>
             </div>
             
         );

@@ -3,6 +3,7 @@ import './App.css';
 import MenuListView from "./components/MenuListView";
 import KioskView from "./components/KioskView";
 import PaymentView from "./components/PaymentView";
+import SuccessView from "./components/SuccessView";
 import {qmbtn, clbtn} from "./components/PopupFunc";
 import {
     BrowserRouter as Router,
@@ -40,6 +41,9 @@ function App() {
             </Route>
               <Route exact path="/components/PaymentView" component={PaymentView}>
                 <PaymentView/>
+                  </Route>
+                  <Route exact path="/components/SuccessView" component={SuccessView}>
+                <SuccessView/>
                   </Route>
                 </Switch>
             </Router>
