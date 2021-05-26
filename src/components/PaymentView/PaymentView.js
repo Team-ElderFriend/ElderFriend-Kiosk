@@ -3,6 +3,13 @@ import classNames from 'classnames/bind'
 import styles from "./PaymentView.scss"
 import {connect} from 'react-redux';
 import FinalSelectListView from "../FinalSelectListView";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    NavLink,
+    Redirect
+  } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +25,13 @@ class prePaymentView extends React.Component {
         return (
             <div className={cx('payment-view')}>
             <FinalSelectListView />
-                <div className={cx('total-prize')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
+                <div className={cx('total-price')}><p> Total Price:<br /> ₩{this.props.counter.sum}<br /><br /> </p></div>
+                <NavLink to="/" style={{ textDecoration: 'none' ,color: 'black' }}>
+                <div className={cx('cancel-button')}>Cancel</div>
+                </NavLink>
+                <NavLink to="/components/SuccessView" style={{ textDecoration: 'none' ,color: 'black' }}>
+                <div className={cx('confirm-button')}>Confirm</div>
+                </NavLink>
             </div>
             
         );
