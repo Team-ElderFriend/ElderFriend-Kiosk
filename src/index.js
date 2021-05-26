@@ -9,7 +9,6 @@ import rootReducer from './reducers'
 import { BrowserRouter } from 'react-router-dom'
 const store = createStore(rootReducer)
 
-
 const MyApp = () => (
   <Provider store={store}>
     <App />
