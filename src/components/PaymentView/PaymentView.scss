@@ -5,7 +5,25 @@
     position: absolute;
     left: 50%;
     margin-left: -214.5px;
-    .total-prize{
+    .total-price{
+        font-size: 200%;
+    }
+    .cancel-button{
+        display: inline;
+        background-color: rgb(240, 157, 157);
+        margin-right: 5%;
+        padding: 5%;
+        border: 1px solid black;
+        border-radius: 5px;
+        font-size: 200%;
+    }
+    .confirm-button{
+        display: inline;
+        background-color: rgb(19, 163, 19);
+        margin-left: 5%;
+        padding: 5%;
+        border: 1px solid black;
+        border-radius: 5px;
         font-size: 200%;
     }
 }

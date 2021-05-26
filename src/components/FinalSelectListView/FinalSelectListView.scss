@@ -2,13 +2,14 @@
 .final-select-list-view{
   border: black solid 1px;
   margin: 15px 4px 0 4px;
-  width: 100%;
+  width: auto;
   height: 45%;
-  float: left;
+  
 
   .final-select-header{
     height: 10%;
-    font-size: 200%
+    font-size: 200%;
+    text-align: center;
   }
 
 
