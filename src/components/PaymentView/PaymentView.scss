@@ -8,23 +8,36 @@
     .total-price{
         font-size: 200%;
         height: 100px;
+        margin-bottom: 30px;
     }
+    .button-box{
+        text-align: center;
+        align-items: center;
     .cancel-button{
-        display: inline;
+        width: 150px;
+        display: inline-block;
         background-color: rgb(240, 157, 157);
+        padding-top: 10px;
+        padding-bottom: 10px;
         margin-right: 5%;
-        padding: 5%;
         border: 1px solid black;
         border-radius: 5px;
         font-size: 200%;
+        text-align: center;
+        align-items: center;
     }
     .confirm-button{
-        display: inline;
+        width: 150px;
+        display: inline-block;
         background-color: rgb(19, 163, 19);
+        padding-top: 10px;
+        padding-bottom: 10px;
         margin-left: 5%;
-        padding: 5%;
         border: 1px solid black;
         border-radius: 5px;
         font-size: 200%;
+        text-align: center;
+        align-items: center;
     }
+}
 }

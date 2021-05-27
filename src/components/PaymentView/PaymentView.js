@@ -10,6 +10,7 @@ import {
     NavLink,
     Redirect
   } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
 
 const cx = classNames.bind(styles);
 
@@ -25,13 +26,15 @@ class prePaymentView extends React.Component {
         return (
             <div className={cx('payment-view')}>
             <FinalSelectListView />
-                <div className={cx('total-price')}><p> Total Price:<br /> ₩{this.props.counter.sum}<br /><br /> </p></div>
+                <div className={cx('total-price')}><p> Total Price:<br /> ₩{this.props.counter.sum} </p></div>
+                <div className={cx('button-box')}>
                 <NavLink to="/" style={{ textDecoration: 'none' ,color: 'black' }}>
                 <div className={cx('cancel-button')}>Cancel</div>
                 </NavLink>
                 <NavLink to="/components/SuccessView" style={{ textDecoration: 'none' ,color: 'black' }}>
                 <div className={cx('confirm-button')}>Confirm</div>
                 </NavLink>
+                </div>
             </div>
             
         );

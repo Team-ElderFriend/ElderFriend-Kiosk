@@ -9,8 +9,11 @@ import {
     NavLink,
     Redirect
   } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
 
 const cx = classNames.bind(styles);
+
+
 
 
 class preSuccessView extends React.Component {

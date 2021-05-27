@@ -244,21 +244,28 @@ class preKioskView extends React.Component {
                                 <SelectListView id='selectlist' menuIds={MenuData.categoryMenus[this.state.category]}/>
 
                                 {this.state.help}
-                                <div className={cx('total-price')}><p> Total Price:<br/> ₩{this.props.counter.sum} </p>
+                                <div className={cx('button-box')}>
+                                <FontSizeScale scale={1/zoom_scale}>
+                                <div className={cx('total-price')}><p>  Total Price:<br/> ₩{this.props.counter.sum} </p>
                                 </div>
-                                <div>&emsp;</div>
+                                </FontSizeScale >
+                                <FontSizeScale scale={0.5/zoom_scale}>
+                                    <div>&emsp;</div>
+                                </FontSizeScale>
                                 <button className={cx('help-button')}
                                         onClick={this.helpButtonClick} style={{
                                     height: 59*(1+ (zoom_scale-1)*0.6) + 'px'}}>{'What should I do?'}</button>
-                                <div className={cx('button-box')}></div>
-                                <div>&emsp;</div>
-                                <NavLink to="/components/PaymentView" style={{textDecoration: 'none', color: 'black'}}>
+                                <FontSizeScale scale={0.5/zoom_scale}>
+                                    <div>&emsp;</div>
+                                </FontSizeScale>
+                                <NavLink className={cx('payment-button-box')} to="/components/PaymentView" >
                                     <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
                                     }}> Payment
                                         {this.state.hand7}
                                         {this.state.hand8}
                                     </div>
                                 </NavLink>
+                                </div>
                                 <div>{this.state.help}</div>
                             </FontSizeScale>
                         }
