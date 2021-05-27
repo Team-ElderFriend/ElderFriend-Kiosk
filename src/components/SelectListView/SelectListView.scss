@@ -5,18 +5,17 @@
   width: 70%;
   height: 30%;
   float: left;
+  overflow: auto;
 
   .select-header{
-    height: 10%;
     font-size: 200%
   }
 
 
   .inner-box{
-    height: 90%;
     text-align: left;
-    margin: 0 0;
-    overflow: auto;
+    margin-top: 10px;
+    
     .slot{
       display: inline-block;
       margin: 12px 9px;
