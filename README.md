@@ -8,7 +8,7 @@ by Akkanit, Emil, Eunsu, Jaewoo
 
 ## **Description**
 ### The project is still in prototyping stage!
-This project is about adding facilitating features to the existence restaurant Kiosk. Due to elders' difficulty during using or beginning to use Kiosk. Adding features have 3 purposes 
+This project is about adding facilitating features to the existing restaurant kiosk interface. Due to elders' difficulty during using or beginning to use Kiosk. Adding features have 3 purposes 
 1. Increasing visibility of menus and button 
 2. Increasing learnability for entire process
 3. Increasing learnability in new menus
