@@ -12,6 +12,7 @@ This project is about adding facilitating features to the existence restaurant K
 1. increasing visibility of menus and button 
 2. increasing learnability for entire process
 3. increasing learnability in new menus
+
 The structure of our source code is based on React components and router. The beginning layer of the site render can be found in App.js which will route you to PaymentView.js, SuccessView.js. Each of the javascript file will include components inside their class and render them in render method. All of the components source code files are in the /src folder. Our site use SCSS files to style itself, the files can be found in ./src/{component_name} folder together with the components they styling(.js) and they have thier name correspond to the component they are styling.  
 **Demo** : https://team-elderfriend.github.io/ElderFriend-Kiosk/
 
