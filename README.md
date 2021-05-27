@@ -1,5 +1,5 @@
 # **Study With Me** - Social Computing (CS473)
-by Akkanit, Emil, Ounsu, Chaeu
+by Akkanit, Emil, Eunsu, Jaewoo
 
 
 ## **Index**
