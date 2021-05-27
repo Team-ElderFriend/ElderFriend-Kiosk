@@ -1,4 +1,4 @@
-# **Study With Me** - Social Computing (CS473)
+# **ElderFriend** - Introduction to Human-Computer Interaction (CS374)
 by Akkanit, Emil, Eunsu, Jaewoo
 
 
