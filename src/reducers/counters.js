@@ -3,6 +3,7 @@ export default (state = {sum:0, selectedMenus:[]}, action) => {
     ...state
 };
 console.log(nstate);
+console.log(action);
   let inde = nstate.selectedMenus.findIndex((element) => element.id === action.id);
     switch (action.type) {
       case 'ADD':
@@ -30,6 +31,10 @@ console.log(nstate);
         nstate.sum = nstate.sum - nstate.selectedMenus[inde].number * nstate.selectedMenus[inde].cost;
         nstate.selectedMenus.splice(inde, 1);
         }
+        return nstate
+      case 'RESET':
+          nstate.sum = 0;
+          nstate.selectedMenus = [];
         return nstate
       default:
         return state

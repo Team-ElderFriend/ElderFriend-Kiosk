@@ -11,3 +11,7 @@ export const remove = (id) => ({
     type: 'REMOVE',
     id
   })
+export const reset = (id = 1) =>({
+  type: 'RESET',
+  id
+})

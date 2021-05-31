@@ -10,6 +10,7 @@ import {
     Redirect
   } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
+import {reset,remove} from "../../actions";
 
 const cx = classNames.bind(styles);
 
@@ -39,14 +40,23 @@ class preSuccessView extends React.Component {
               Total Price: ₩{this.props.counter.sum}
               
               </div>
-              <NavLink to="/" style={{ textDecoration: 'none' ,color: 'black' }}>
-                <div className={cx('return-button')}>Return</div>
+              <NavLink to="/" style={{ textDecoration: 'none' ,color: 'black' }} onClick ={ ()=>{
+                console.log("reset");
+                  this.props.reset();
+                }}>
+                <div className={cx('return-button')} >Return</div>
               </NavLink>
             </div>
         );
     }
 }
+const mapDispatchToProps = function (dispatch) {
+  return {
+      reset: () => dispatch(reset()),
+      remove: () => dispatch(remove())
 
+  }
+}
 
 const mapStateToProps = function (state) {
     return {
@@ -54,6 +64,6 @@ const mapStateToProps = function (state) {
       counter: state.counters || {sum:0, selectedMenus:[]}
     }
   }
-  const SuccessView = connect(mapStateToProps)(preSuccessView)
+  const SuccessView = connect(mapStateToProps, mapDispatchToProps)(preSuccessView)
 
 export default SuccessView
