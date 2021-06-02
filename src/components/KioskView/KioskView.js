@@ -27,7 +27,7 @@ import {
     Switch,
     Route,
     NavLink,
-    Redirect, 
+    Redirect,
     Link
 } from "react-router-dom";
 import {add, remove, reduce} from "../../actions";
@@ -54,6 +54,8 @@ class preKioskView extends React.Component {
         this.changeCategory = this.changeCategory.bind(this);
         this.helpButtonClick = this.helpButtonClick.bind(this);
         this.onZoomSliderChange = this.onZoomSliderChange.bind(this);
+        this.onZoomMinusButtonClicked = this.onZoomMinusButtonClicked.bind(this);
+        this.onZoomPlusButtonClicked = this.onZoomPlusButtonClicked.bind(this);
         this.dispatch = dispatch
 
         this.categories = [
@@ -175,6 +177,18 @@ class preKioskView extends React.Component {
         })
     }
 
+    onZoomMinusButtonClicked(event){
+        this.setState({
+            zoom_level: Math.max(this.state.zoom_level - 1, 0)
+        })
+    }
+
+    onZoomPlusButtonClicked(event){
+        this.setState({
+            zoom_level: Math.min(this.state.zoom_level + 1, 4)
+        })
+    }
+
     render() {
         const categoryTableButtonMapper = (d, ind) => <td><CategorySelectButton className={cx('csb')}
                                                                                 category={d.category}
@@ -216,11 +230,11 @@ class preKioskView extends React.Component {
                 {/* header */}
                 <div className={cx('header')}>
                     <img className={cx('logo')} src={LogoImg} alt=""/>
-                    <div className={cx('magnifier-image', 'left')}>
+                    <div className={cx('magnifier-image', 'left')} onClick={this.onZoomMinusButtonClicked}>
                         <img src={MagnifierImg} alt={""}/>
                         <div className={cx('inner-text')}> -</div>
                     </div>
-                    <div className={cx('magnifier-image', 'right')}>
+                    <div className={cx('magnifier-image', 'right')} onClick={this.onZoomPlusButtonClicked}>
                         <img src={MagnifierImg} alt={""}/>
                         <div className={cx('inner-text')}> +</div>
                     </div>
