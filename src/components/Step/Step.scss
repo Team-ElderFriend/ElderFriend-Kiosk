@@ -19,16 +19,18 @@
 }
 
 .step-message {
+    font-size: 20px;
     font-weight: bold;
     letter-spacing: .02em;
     word-spacing: .05em;
     border: 1px dashed black;
-    background-color: lightblue;
+    background-color: yellow;
     padding: 5px;
     margin: 3px;
     width: 70%;
     display: inline-block;
     position: absolute;
-    top: 670px;
+    top: 615px;
     left: 50px;
+    z-index: 300;
 }

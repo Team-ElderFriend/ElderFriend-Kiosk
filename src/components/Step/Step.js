@@ -46,6 +46,12 @@ const Step = ({step, dir, message}) => {
                 &emsp;
             </div>
         )
+    } else if (step === '0') {
+        return (
+            <div>
+                <div className={cx('step-message')}>{message}</div>
+            </div>
+        )
     }
 }
 

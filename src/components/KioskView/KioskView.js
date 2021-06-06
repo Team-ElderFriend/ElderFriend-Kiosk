@@ -40,7 +40,7 @@ class preKioskView extends React.Component {
         super(props);
         this.state = {
             category: 'recommended',
-            help: ''/*<div>&emsp;</div>*/,
+            help: '',
             hand1: '',
             hand2: '',
             hand3: '',
@@ -93,12 +93,13 @@ class preKioskView extends React.Component {
             <Step step={'1'} dir={'down'} message={'Click to see the burger menus.'}/>,
             <Step step={'2'} dir={'up'}
                   message={'Click to select this menu or scroll to the bottom to see more menus.'}/>,
-            <Step step={'3'} dir={'right'} message={'Add the selected menu to the list.'}/>,
+            <Step step={'3'} dir={'right'} message={'Add this menu to the list.'}/>,
             <Step step={'4'} dir={'up'} message={'Click to see the side menus.'}/>,
             <Step step={'5'} dir={'up'} message={'Click to select this side menu.'}/>,
-            <Step step={'6'} dir={'right'} message={'Add the selected menu to the list.'}/>,
+            <Step step={'6'} dir={'right'} message={'Add this menu to the list.'}/>,
             <Step step={'7'} dir={'right'} message={'Make payment.'}/>,
-            <Step step={'8'} dir={'up'} message={'Press "Cancel" or "Confirm" depending on your decision.'}/>
+            <Step step={'8'} dir={'up'} message={'Press "Cancel" or "Confirm" depending on your decision.'}/>,
+            <Step step={'0'} dir={'none'} message={'Note: This guide is automatic. Each step is shown for 3 seconds. Please do not touch the screen while the steps are being displayed.'}/>
         ]
 
     }
@@ -108,37 +109,40 @@ class preKioskView extends React.Component {
     }
 
     helpButtonClick() {
-        this.setState({hand1: this.hands[1]});
-        this.setState({help: this.helpMessages[0]})
+        this.setState({help: this.helpMessages[8]});
         setTimeout(() => {
-            this.setState({category: 'burgers', hand1: '', hand2: this.hands[2], help: this.helpMessages[1]});
+            this.setState({hand1: this.hands[1]});
+            this.setState({help: this.helpMessages[0]});
             setTimeout(() => {
-                this.setState({help: this.helpMessages[2], hand2: '', hand3: this.hands[3]});
+                this.setState({category: 'burgers', hand1: '', hand2: this.hands[2], help: this.helpMessages[1]});
                 setTimeout(() => {
-                    this.setState({help: this.helpMessages[3], hand3: '', hand4: this.hands[4]});
-                    this.dispatch(add(2, 6400));
+                    this.setState({help: this.helpMessages[2], hand2: '', hand3: this.hands[3]});
                     setTimeout(() => {
-                        this.setState({
-                            category: 'sideMenus',
-                            help: this.helpMessages[4],
-                            hand4: '',
-                            hand5: this.hands[5]
-                        });
+                        this.setState({help: this.helpMessages[3], hand3: '', hand4: this.hands[4]});
+                        this.dispatch(add(2, 6400));
                         setTimeout(() => {
-                            this.setState({help: this.helpMessages[5], hand5: '', hand6: this.hands[6]});
+                            this.setState({
+                                category: 'sideMenus',
+                                help: this.helpMessages[4],
+                                hand4: '',
+                                hand5: this.hands[5]
+                            });
                             setTimeout(() => {
-                                this.setState({help: this.helpMessages[6], hand6: '', hand7: this.hands[7]});
-                                this.dispatch(add(17, 3100));
+                                this.setState({help: this.helpMessages[5], hand5: '', hand6: this.hands[6]});
                                 setTimeout(() => {
-                                    this.setState({help: this.helpMessages[7], hand7: '', hand8: this.hands[8]});
+                                    this.setState({help: this.helpMessages[6], hand6: '', hand7: this.hands[7]});
+                                    this.dispatch(add(17, 3100));
                                     setTimeout(() => {
-                                        this.dispatch(remove(2));
-                                        this.dispatch(remove(17));
-                                        this.setState({
-                                            category: 'recommended',
-                                            help: <div>&emsp;</div>,
-                                            hand8: ''
-                                        });
+                                        this.setState({help: this.helpMessages[7], hand7: '', hand8: this.hands[8]});
+                                        setTimeout(() => {
+                                            this.dispatch(remove(2));
+                                            this.dispatch(remove(17));
+                                            this.setState({
+                                                category: 'recommended',
+                                                help: <div>&emsp;</div>,
+                                                hand8: ''
+                                            });
+                                        }, 3000);
                                     }, 3000);
                                 }, 3000);
                             }, 3000);
@@ -146,8 +150,7 @@ class preKioskView extends React.Component {
                     }, 3000);
                 }, 3000);
             }, 3000);
-        }, 3000);
-
+        }, 6000);
     }
 
     getScale(level) {
@@ -267,7 +270,7 @@ class preKioskView extends React.Component {
                                 </FontSizeScale>
                                 <button className={cx('help-button')}
                                         onClick={this.helpButtonClick} style={{
-                                    height: 59*(1+ (zoom_scale-1)*0.6) + 'px'}}>{'What should I do?'}</button>
+                                    height: 59*(1+ (zoom_scale-1)*0.6) + 'px'}}>{'Guide'}</button>
                                 <FontSizeScale scale={0.5/zoom_scale}>
                                     <div>&emsp;</div>
                                 </FontSizeScale>
