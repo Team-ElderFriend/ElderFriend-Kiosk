@@ -11,24 +11,24 @@ const cx = classNames.bind(styles);
 function getSize(zoomLevel) {
     return {
         0: {
-            width: 67,
-            height: 135,
+            width: 70,
+            height: 150,
         },
         1: {
-            width: 67,
-            height: 135,
+            width: 70,
+            height: 150,
         },
         2: {
-            width: 70,
+            width: 81,
             height: 180,
         },
         3: {
-            width: 104,
-            height: 260,
+            width: 100,
+            height: 250,
         },
         4: {
-            width: 160,
-            height: 350,
+            width: 120,
+            height: 330,
         },
 
     }[zoomLevel]
