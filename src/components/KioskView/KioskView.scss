@@ -39,7 +39,8 @@
       position: absolute;
       left: 160px;
       top: 10px;
-      .inner-text{
+
+      .inner-text {
         position: absolute;;
         left: 10px;
         top: -6px;
@@ -50,14 +51,15 @@
       position: absolute;
       left: 375px;
       top: 10px;
-      .inner-text{
+
+      .inner-text {
         position: absolute;;
         left: 6px;
         top: -5px;
       }
     }
 
-    .zoom-slider{
+    .zoom-slider {
       position: absolute;
       left: 210px;
       top: 15px;
@@ -84,24 +86,27 @@
       font-size: 80%;
       font-weight: bold;
 
-      .category-select-button{
+      .category-select-button {
         position: relative;
       }
     }
   }
-  .button-box{
+
+  .button-box {
     width: 25%;
     float: left;
 
-  .total-price{
-    font-size: 150%;
-    margin-top: 20px;
-    display: block;
-  }
-  .payment-button-box {
-    color: black;
-    text-decoration: none;
-  }
+    .total-price {
+      font-size: 150%;
+      margin-top: 20px;
+      display: block;
+    }
+
+    .payment-button-box {
+      color: black;
+      text-decoration: none;
+    }
+
     .kiosk-button {
       width: 111px;
       height: 59px;
@@ -115,36 +120,35 @@
       color: black;
       justify-content: space-around;
     }
-  
 
-  .kiosk-button.payment-button {
-    height: 47px;
-    align-items: center;
-    text-align: center;
-    display: flex
+
+    .kiosk-button.payment-button {
+      height: 47px;
+      align-items: center;
+      text-align: center;
+      display: flex
+    }
+
+    .help-button {
+      width: 111px;
+      background-color: #98AFFF;
+      border: 1px solid black;
+      border-radius: 5px;
+      font-size: 1.1em;
+      font-weight: bolder;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: space-around;
+    }
+
+    .help-button:hover {
+      cursor: pointer;
+    }
   }
 
-  .help-button {
-    width: 111px;
-    background-color: #98AFFF;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-size: 1.1em;
-    font-weight: bolder;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: space-around;
-  }
 
-  .help-button:hover {
-    cursor: pointer;
-  }
-}
-
-
-
-  .hand{
+  .hand {
     pointer-events: none;
     max-width: 60px;
     max-height: 60px;

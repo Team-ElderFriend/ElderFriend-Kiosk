@@ -3,19 +3,19 @@
   border: black solid 1px;
   margin: 15px 4px 0 4px;
   width: 70%;
-  height: 30%;
+  height: 305px;
   float: left;
   overflow: auto;
 
   .select-header{
-    font-size: 200%
+    font-size: 15pt;
   }
 
 
   .inner-box{
     text-align: left;
     margin-top: 10px;
-    
+
     .slot{
       display: inline-block;
       margin: 12px 9px;

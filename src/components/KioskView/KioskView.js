@@ -155,8 +155,8 @@ class preKioskView extends React.Component {
             0: 0.6,
             1: 0.8,
             2: 1,
-            3: 1.4,
-            4: 1.8,
+            3: 1.3,
+            4: 1.6,
         }
         return scaleMap[level];
     }
@@ -165,9 +165,9 @@ class preKioskView extends React.Component {
         return {
             0: 40,
             1: 40,
-            2: 45,
-            3: 55,
-            4: 110,
+            2: 40,
+            3: 40,
+            4: 80,
         }[level];
     }
 
@@ -254,10 +254,9 @@ class preKioskView extends React.Component {
                                 </table>
                                 <MenuListView id='menulist' menuIds={MenuData.categoryMenus[this.state.category]}
                                               getInsertedFromInd={handInserterToMenu}
-                                              getInsertedToAddButtonFromInd={handInserterToAddButton}/>
+                                              getInsertedToAddButtonFromInd={handInserterToAddButton} style={{height:325+40-this.getCategoryButtonHeight(zoom_level)}}/>
                                 <SelectListView id='selectlist' menuIds={MenuData.categoryMenus[this.state.category]}/>
 
-                                {this.state.help}
                                 <div className={cx('button-box')}>
                                 <FontSizeScale scale={1/zoom_scale}>
                                 <div className={cx('total-price')}><p>  Total Price:<br/> ₩{this.props.counter.sum} </p>
