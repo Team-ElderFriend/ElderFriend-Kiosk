@@ -54,7 +54,7 @@ const preSelectViewInnerElement = ({menuId, menuNumber, menuName, menuPrice, ima
                             </div>
                             <img alt="" className={cx('image')} src={imageSrc}/>
                             <div className={cx('name-label')}>
-                                {menuName} <i onClick={qmbtn} className="far fa-question-circle"></i>
+                                {menuName} <i onClick={qmbtn} className="fas fa-question-circle" style={{fontSize:'125%',color: '#CB4335'}}></i>
                             </div>
                             <div className={cx('price-label')}>
                                 ₩{menuPrice}
