@@ -274,12 +274,11 @@ class preKioskView extends React.Component {
                                 <FontSizeScale scale={0.5/zoom_scale}>
                                     <div>&emsp;</div>
                                 </FontSizeScale>
-                                { (this.props.counter.sum!=0||this.state.hand7||this.state.hand8)&&
+                                { (this.props.counter.sum!=0)&&
                                 <NavLink className={cx('payment-button-box')} to="/components/PaymentView" >
-                                    <div className={cx('kiosk-button', 'payment-button')} onClick={() => {
-                                    }}> Payment
-                                        {this.state.hand7}
-                                        {this.state.hand8}
+                                    <div className={cx('kiosk-button', 'payment-button')}> Payment
+                                    {this.state.hand7}
+                                    {this.state.hand8}
                                     </div>
                                 </NavLink>}
                                 </div>
