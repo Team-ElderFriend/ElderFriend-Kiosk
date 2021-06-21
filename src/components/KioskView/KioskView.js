@@ -11,7 +11,6 @@ import {connect} from 'react-redux';
 import LogoImg from '../../images/ui/cartoon.png'
 import MagnifierImg from '../../images/ui/magnifier-2.png'
 import Slider from '@material-ui/core/Slider';
-import {withRouter} from 'react-router';
 
 
 import up from '../../images/directions/up.png'
@@ -28,7 +27,8 @@ import {
     Route,
     NavLink,
     Redirect,
-    Link
+    Link,
+    useHistory
 } from "react-router-dom";
 import {add, remove, reduce} from "../../actions";
 
@@ -193,6 +193,8 @@ class preKioskView extends React.Component {
     }
 
     render() {
+
+
         const categoryTableButtonMapper = (d, ind) => <td><CategorySelectButton className={cx('csb')}
                                                                                 category={d.category}
                                                                                 onCategorySelect={this.changeCategory}
@@ -278,7 +280,7 @@ class preKioskView extends React.Component {
                                 <NavLink className={cx('payment-button-box')} to="/components/PaymentView" >
                                     <div className={cx('kiosk-button', 'payment-button')}> Payment
                                     {this.state.hand7}
-                                    {this.state.hand8}
+                                    {(this.state.hand8)&&<Redirect to ="/components/PaymentView"/>}
                                     </div>
                                 </NavLink>}
                                 </div>

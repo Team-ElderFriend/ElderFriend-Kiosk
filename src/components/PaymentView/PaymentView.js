@@ -16,7 +16,7 @@ const cx = classNames.bind(styles);
 
 
 class prePaymentView extends React.Component {
-    constructor(props) {
+    constructor(dispatch, ...props) {
         super(props);
         this.state = {
         };
@@ -35,6 +35,9 @@ class prePaymentView extends React.Component {
                 <div className={cx('confirm-button')}>Confirm</div>
                 </NavLink>
                 </div>
+                { (this.props.counter.sum==0)&&
+                <Redirect to ="/"/>
+                }
             </div>
             
         );
