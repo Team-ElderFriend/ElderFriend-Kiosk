@@ -10,7 +10,8 @@ import {
     NavLink,
     Redirect
   } from "react-router-dom";
-import { useHistory } from 'react-router-dom'
+import up from '../../images/directions/up.png';
+import Step from "../Step";
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +21,23 @@ class prePaymentView extends React.Component {
         super(props);
         this.state = {
         };
+
+
+
+
+        this.hands = [
+          '',
+          <img className={cx('step-1', 'hand')} src={up} alt={''}/>,
+          <img className={cx('step-2', 'hand')} src={up} alt={''}/>,
+          <img className={cx('step-3', 'hand')} src={up} alt={''}/>,
+          <img className={cx('step-4', 'hand')} src={up} alt={''}/>,
+          <img className={cx('step-5', 'hand')} src={up} alt={''}/>,
+          <img className={cx('step-6', 'hand')} src={up} alt={''}/>,
+          <img className={cx('step-7', 'hand')} src={up} alt={''}/>,
+          <img className={cx('step-8', 'hand')} src={up} alt={''}/>,
+      ]
     }
+    
 
     render() {
         return (
@@ -32,9 +49,17 @@ class prePaymentView extends React.Component {
                 <div className={cx('cancel-button')}>Cancel</div>
                 </NavLink>
                 <NavLink to="/components/SuccessView" style={{ textDecoration: 'none' ,color: 'black' }}>
-                <div className={cx('confirm-button')}>Confirm</div>
+                <div className={cx('confirm-button')}>
+                  Confirm
+                  {(this.props.counter.guide)&&
+                  <img className={cx('hand')} src={up} alt={''}/>
+                  }
+                </div>
                 </NavLink>
                 </div>
+                {(this.props.counter.guide)&&
+                <div><Step step={'8'} dir={'up'} message={'Press "Cancel" or "Confirm" depending on your decision.'}/></div>
+                }
                 { (this.props.counter.sum==0)&&
                 <Redirect to ="/"/>
                 }

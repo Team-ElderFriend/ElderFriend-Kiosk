@@ -30,7 +30,7 @@ import {
     Link,
     useHistory
 } from "react-router-dom";
-import {add, remove, reduce} from "../../actions";
+import {add, remove, reduce, makecopy, usecopy, reset} from "../../actions";
 
 const cx = classNames.bind(styles);
 
@@ -109,6 +109,8 @@ class preKioskView extends React.Component {
     }
 
     helpButtonClick() {
+        this.dispatch(makecopy());
+        this.dispatch(reset());
         this.setState({help: this.helpMessages[8]});
         setTimeout(() => {
             this.setState({hand1: this.hands[1]});
@@ -137,6 +139,7 @@ class preKioskView extends React.Component {
                                         setTimeout(() => {
                                             this.dispatch(remove(2));
                                             this.dispatch(remove(17));
+                                            this.dispatch(usecopy());
                                             this.setState({
                                                 category: 'recommended',
                                                 help: <div>&emsp;</div>,

@@ -15,3 +15,11 @@ export const reset = (id = 1) =>({
   type: 'RESET',
   id
 })
+export const makecopy = (id = 1) =>({
+  type: 'MAKECOPY',
+  id
+})
+export const usecopy = (id = 1) =>({
+  type: 'USECOPY',
+  id
+})

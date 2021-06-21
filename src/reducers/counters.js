@@ -1,4 +1,4 @@
-export default (state = {sum:0, selectedMenus:[]}, action) => {
+export default (state = {sum:0, selectedMenus:[], copiedSum:0, copiedMenus:[], guide: false}, action) => {
   let nstate = {
     ...state
 };
@@ -35,8 +35,18 @@ console.log(action);
       case 'RESET':
           nstate.sum = 0;
           nstate.selectedMenus = [];
-        return nstate
+        return nstate;
       default:
         return state
+      case 'MAKECOPY':
+          nstate.copiedSum = nstate.sum;
+          nstate.copiedMenus = nstate.selectedMenus;
+          nstate.guide = true;
+        return nstate;
+      case 'USECOPY':
+          nstate.sum = nstate.copiedSum;
+          nstate.selectedMenus = nstate.copiedMenus;
+          nstate.guide = false;
+        return nstate;
     }
   }

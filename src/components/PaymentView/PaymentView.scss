@@ -38,6 +38,20 @@
         font-size: 200%;
         text-align: center;
         align-items: center;
+        position: relative;
+        .hand {
+            pointer-events: none;
+            max-width: 60px;
+            max-height: 60px;
+            width: auto;
+            height: auto;
+            z-index: 200;
+        
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 0)
+          }
     }
 }
 }
