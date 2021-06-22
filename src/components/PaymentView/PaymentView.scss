@@ -5,6 +5,7 @@
     position: absolute;
     left: 50%;
     margin-left: -214.5px;
+    font-weight: bold;
     .total-price{
         font-size: 200%;
         height: 100px;
@@ -16,7 +17,7 @@
     .cancel-button{
         width: 150px;
         display: inline-block;
-        background-color: rgb(240, 157, 157);
+        background-color: rgb(253, 174, 174);
         padding-top: 10px;
         padding-bottom: 10px;
         margin-right: 5%;
@@ -29,7 +30,7 @@
     .confirm-button{
         width: 150px;
         display: inline-block;
-        background-color: rgb(19, 163, 19);
+        background-color: rgb(47, 255, 47);
         padding-top: 10px;
         padding-bottom: 10px;
         margin-left: 5%;
