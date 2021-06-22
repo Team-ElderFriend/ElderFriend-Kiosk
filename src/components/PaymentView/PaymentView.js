@@ -52,7 +52,7 @@ class prePaymentView extends React.Component {
                 <div className={cx('confirm-button')}>
                   Confirm
                   {(this.props.counter.guide)&&
-                  <img className={cx('hand')} src={up} alt={''}/>
+                  <img className={cx('step-8','hand')} src={up} alt={''}/>
                   }
                 </div>
                 </NavLink>
